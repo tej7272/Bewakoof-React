@@ -1,0 +1,169 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.headerDivWrapper {
+  width: 100%;
+  z-index: 51;
+  position: fixed;
+  top: 0;
+  height: 79px;
+  transition: all 0.5s ease-in-out;
+}
+
+.topBarWrapper {
+  background: #eee;
+  text-align: center;
+}
+
+.topBar,
+.topBarWrapper {
+  width: 100%;
+  display: inline-block;
+}
+
+.topBar {
+  padding: 8px 0 6px;
+  max-width: 1170px;
+  margin: 0 auto;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.pull-left {
+  display: inline-flex;
+  float: left;
+}
+
+.pull-right {
+  display: inline-flex;
+  float: right;
+}
+
+.headerLinks {
+  list-style-type: none;
+  opacity: 0.8;
+  margin: 0 8px;
+}
+
+.mainHeaderWrapper {
+  width: 100%;
+  background: #fff;
+  height: 52px;
+  line-height: 52px;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  position: relative;
+}
+
+.mainHeader{
+  width:1170px;
+  margin: 0 auto;
+}
+
+.bewakoofLogoDiv{
+  width: 16.66%;
+  line-height: 52px;
+  height: 52px;
+  overflow-y: hidden;
+  padding: 0 9px;
+
+}
+.bewakoofLogoDiv img{
+  width: 147px;
+  height:20px;
+}
+
+.dropDownWrapper{
+  position: static;
+    padding: 0;
+    width: 41.66666667%;
+}
+
+.float{
+  float:left;
+}
+.dorpDownDiv{
+  padding: 0!important;
+  white-space: nowrap;
+}
+
+.menuSelectWrap{
+  text-decoration: none;
+  color:rgb(51,51,51);
+  display: inline-block;
+  height: 51px;
+  transition: left .2s ease-out,border-color .1s ease-in;
+  border-bottom: 4px solid transparent;
+}
+
+.menuSelectWrap > span{
+  display: inline-table;
+  font-size: 13px;
+  font-family: montserrat,sans-serif;
+  vertical-align: middle;
+  line-height: 45px;
+  padding: 0 11px;
+  letter-spacing: 1px;
+  position: relative;
+  cursor: pointer;
+}
+
+.searchMyAccount{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 41.66%;
+  position: relative;
+}
+
+.mainHeaderCols{
+  padding: 0 9px;
+}
+.activeMenuWrp{
+  float: right;
+}
+
+.actionMenu{
+  position: relative;
+  height: 50px;
+  float: right;
+  min-width: -webkit-max-content;
+  min-width: max-content;
+  z-index: 1021;
+}
+
+.actionMenu img{
+  width:30px;
+  height:30px;
+  margin: 11px 0 0 5px;
+}
+
+.actionMenu a{
+  padding: 10px;
+  line-height: normal;
+}
+ .actionMenu svg {
+  color: black;
+}
+
+
+
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hidden-xs {
+    display: none !important;
+  }
+
+  .headerDivWrapper {
+    height: 56px;
+    background-color: #f5f5f5;
+  }
+}
