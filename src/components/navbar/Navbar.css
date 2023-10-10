@@ -1,0 +1,401 @@
+ .headerDivWrapper {
+     width: 100%;
+     z-index: 51;
+     position: fixed;
+     top: 0;
+     height: 79px;
+     transition: all 0.5s ease-in-out;
+ }
+
+ .topBarWrapper {
+     background: #eee;
+     text-align: center;
+ }
+
+ .topBar,
+ .topBarWrapper {
+     width: 100%;
+     display: inline-block;
+ }
+
+ .topBar {
+     padding: 8px 0 6px;
+     max-width: 1170px;
+     margin: 0 auto;
+     font-size: 10px;
+     font-weight: 500;
+ }
+
+ .pull-left {
+     display: inline-flex;
+     float: left;
+ }
+
+ .pull-right {
+     display: inline-flex;
+     float: right;
+ }
+
+ .headerLinks {
+     list-style-type: none;
+     opacity: 0.8;
+     margin: 0 8px;
+ }
+
+ .mainHeaderWrapper {
+     width: 100%;
+     background: #fff;
+     height: 52px;
+     line-height: 52px;
+     border-bottom: 1px solid rgba(0, 0, 0, .2);
+     position: relative;
+ }
+
+ .mainHeader {
+     width: 1170px;
+     margin: 0 auto;
+ }
+
+ .bewakoofLogoDiv {
+     width: 16.66%;
+     line-height: 52px;
+     height: 52px;
+     overflow-y: hidden;
+     padding: 0 9px;
+
+ }
+
+ .bewakoofLogoDiv img {
+     width: 147px;
+     height: 20px;
+ }
+
+ .dropDownWrapper {
+     position: static;
+     padding: 0;
+     width: 41.66666667%;
+ }
+
+ .float {
+     float: left;
+ }
+
+ .dorpDownDiv {
+     padding: 0 !important;
+     white-space: nowrap;
+ }
+
+ .menuSelectWrap {
+     text-decoration: none;
+     color: rgb(51, 51, 51);
+     display: inline-block;
+     height: 51px;
+     transition: left .2s ease-out, border-color .1s ease-in;
+     border-bottom: 4px solid transparent;
+ }
+
+ .menuSelectWrap>span {
+     display: inline-table;
+     font-size: 13px;
+     font-family: montserrat, sans-serif;
+     vertical-align: middle;
+     line-height: 45px;
+     padding: 0 11px;
+     letter-spacing: 1px;
+     position: relative;
+     cursor: pointer;
+ }
+
+ .searchMyAccount {
+     display: flex;
+     flex-direction: row-reverse !important;
+     width: 41.66%;
+     position: relative;
+     float: left;
+ }
+
+ .mainHeaderCols {
+     padding: 0 9px;
+ }
+
+ .activeMenuWrp {
+     float: right;
+     padding-right: 0 ;
+ }
+
+ .actionMenu {
+     position: relative;
+     height: 50px;
+     float: right;
+     min-width: -webkit-max-content;
+     min-width: max-content;
+     z-index: 1021;
+ }
+
+ .actionMenu a {
+     padding: 15px 10px;
+     line-height: normal;
+ }
+
+ .actionMenu img {
+     width: 30px;
+     height: 30px;
+     margin: 11px 0 0 5px;
+ }
+
+ .actionMenu .country {
+     padding-right: 0px;
+ }
+
+ .actionMenu svg {
+     color: black;
+     font-size: 20px;
+ }
+
+ .searchMyAccount .searchWrapper {
+     position: relative;
+     width: calc(100% - 150px);
+    
+ }
+
+ .icon-addon {
+     position: relative;
+     color: #555;
+     display: block;
+     height: 52px;
+ }
+
+ .searchContainer {
+     position: relative;
+     border-bottom: none;
+     width: 100%;
+     text-align: left;
+     height: 40px;
+     margin-top: 6px;
+     transition: .5s ease;
+     float: right;
+
+ }
+
+ .searchContainer svg {
+     position: absolute;
+     left: 12px;
+     top: 12px;
+     font-size: 18px;
+     color: rgba(0, 0, 0, .5);
+ }
+
+
+ .icon-addon.addon-sm .form-controls {
+     padding: 5px 5px 5px 40px;
+     font-size: 12px;
+     line-height: 1.5;
+     box-shadow: none;
+     width: 100%;
+     background: #eaeaea;
+     border: 1px solid transparent;
+     color: rgba(0, 0, 0, .5);
+     border-radius: 5px;
+     position: relative;
+     margin: 0;
+     height: 100%;
+     transition: all .1s ease-in .1s;
+ }
+
+ .icon-addon .form-controls {
+     float: left;
+     font-weight: 400;
+ }
+
+ input {
+     vertical-align: middle;
+ }
+
+ .seperator {
+     display: inline-block;
+     height: 20px;
+     opacity: .3;
+     background: #000;
+     width: 1px;
+     position: absolute;
+     right: -15px;
+     top: calc(50% - 10px);
+ }
+
+/* side navbar start from here  */
+
+ .sideNavBox .mHeaderDiv {
+     width: 100%;
+     background: #fff;
+     height: 56px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+ }
+
+ .sideNavBox .mHeaderDiv.mHeaderSticky {
+     position: fixed;
+     top: 0;
+     z-index: 9999;
+ }
+
+ .sideNavBox .mHeader {
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-flow: inherit;
+     flex-flow: inherit;
+     -ms-flex-pack: start;
+     justify-content: flex-start;
+     -ms-flex-align: center;
+     align-items: center;
+     position: relative;
+     width: 100%;
+     height: 56px;
+ }
+
+ .noMg {
+     margin: 0;
+ }
+
+ .sideNavBox .mLogoDiv {
+     margin: 0;
+     padding: 0 8px 0 16px;
+ }
+
+ label {
+     display: inline-block;
+     max-width: 100%;
+     margin-bottom: 5px;
+     font-weight: 700;
+ }
+
+ .visible-sm,
+ .visible-xs {
+     display: none;
+ }
+
+ .sideNavBox .mLogoDiv .mMenuBtn {
+     font-size: 24px;
+     padding: 0;
+     color: #000;
+ }
+
+ .sideNavBox .mLogoDiv img {
+     height: 24px;
+     width: 24px;
+     vertical-align: middle;
+ }
+
+ .mMenuBtn {
+     padding: 19px 8px 18px;
+     margin: 0;
+ }
+
+ .sideNavBox .mHeaderDiv #hambu {
+     display: none;
+ }
+
+ input[type=checkbox],
+ input[type=radio] {
+     box-sizing: border-box;
+     padding: 0;
+ }
+
+ .sideNavBox .mActionMenu {
+     width: calc(100% - 190px);
+     color: #000;
+     display: block;
+ }
+
+ .sideNavBox .mActionMenu span {
+     float: none;
+ }
+
+
+ .mBewakoofLogoDiv {
+     display: inline-block;
+     vertical-align: top;
+ }
+
+ .mBewakoofLogoDiv img {
+     height: 18px;
+     margin: 16px 0px;
+     width: 40px;
+ }
+
+ .sideNavBox .iconMenuOption {
+     text-align: right;
+     position: absolute;
+     right: 8px;
+     margin-bottom: 25px;
+ }
+
+ .sideNavBox .iconMenuOption span {
+     color: #000;
+     display: inline-block;
+     font-size: 20px;
+     padding: 14px 8px 0;
+     line-height: 40px;
+ }
+
+ .sideNavBox .msearchContainer {
+     width: 100%;
+     text-align: left;
+     display: inline-block;
+ }
+
+ .sideNavBox .iconMenuOption span .header-icon {
+     height: 24px;
+     width: 24px;
+ }
+
+ .ml-1 {
+     margin-left: 0.25rem !important;
+ }
+
+ .iconMenuOption span .cartCountHome {
+     font-family: montserrat-bold, sans-serif;
+     font-size: 9px;
+     width: 15px;
+     height: 15px;
+     background: #f45440;
+     color: #fff;
+     top: 27px;
+     right: 12px;
+     padding-top: 1.5px;
+ }
+
+ .sideNavBox .iconMenuOption span .cartCount {
+     display: block;
+     position: absolute;
+     border-radius: 50%;
+     line-height: 1.4;
+     text-align: center;
+     padding: 0;
+ }
+
+
+
+ @media (min-width: 769px) and (max-width: 991px) {
+     .hidden-sm {
+         display: none !important;
+     }
+
+     .visible-sm {
+         display: block !important;
+     }
+ }
+
+ @media (max-width: 769px) {
+     .hidden-xs {
+         display: none !important;
+     }
+
+     .visible-xs {
+         display: block !important;
+
+     }
+
+     .headerDivWrapper {
+         height: 56px;
+         background-color: #f5f5f5;
+     }
+ }

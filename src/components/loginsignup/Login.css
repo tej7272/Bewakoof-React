@@ -1,0 +1,288 @@
+.mob-pass-wrap,
+.otp-wrap {
+    color: #000;
+}
+
+.otp-desk-view-wrap {
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 79px;
+    height: calc(100vh - 79px);
+    background-image: linear-gradient(0deg, #fff4c4, #fff);
+}
+
+.otp-desk-view-wrap .body {
+    height: 90%;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 2px 31px 0 hsla(0, 0%, 72.9%, .07);
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.formToast {
+    position: absolute;
+    top: 66px;
+    left: 30px;
+    z-index: 1;
+    width: 100%;
+    width: calc(100% - 60px);
+    opacity: 1 !important;
+    min-height: 35px;
+    margin: 0 auto;
+    padding: 4px 8px 5px 50px;
+    color: #444;
+    line-height: normal;
+    font-size: 12px;
+    font-family: montserrat, sans-serif;
+    background-size: auto 24px !important;
+    background-color: #fff !important;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .5);
+    animation: flipInX .5s ease;
+    display: table !important;
+}
+
+.formToastError{
+    background: url(https://images.bewakoof.com/sizeguide/group-3-3x-1511513949.png) no-repeat 10px 50%;
+}
+
+.formToastSuccess{
+    background: url('../../assest/successLogo.png') no-repeat 10px 50%;
+}
+
+
+.mob-pass-wrap .mob-pass-body,
+.mob-pass-wrap .otp-body,
+.otp-wrap .mob-pass-body,
+.otp-wrap .otp-body {
+    margin-top: 55px;
+    padding: 20px;
+}
+
+.mob-pass-wrap .mob-pass-body h2,
+.mob-pass-wrap .otp-body h2,
+.otp-wrap .mob-pass-body h2,
+.otp-wrap .otp-body h2 {
+    font-size: 14px;
+    font-family: montserrat-bold, sans-serif;
+    margin: 16px 0 35px;
+}
+
+.mob-pass-body .input-mob-pass {
+    position: relative;
+    margin-bottom: 10px !important;
+}
+
+.xgroup {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 45px;
+}
+
+.mob-pass-body .xgroup {
+    margin-bottom: 35px !important;
+}
+
+.mob-pass-wrap .mob-pass-body input,
+.mob-pass-wrap .otp-body input,
+.otp-wrap .mob-pass-body input,
+.otp-wrap .otp-body input {
+    font-family: montserrat-bold, sans-serif;
+}
+
+.xgroup input,
+.xgroup select {
+    width: 100%;
+    height: 29px;
+    padding: 5px 0;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #bcbcbc;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    display: block;
+    line-height: normal;
+}
+
+.xgroup .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.xgroup label {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: .5;
+    color: #181818;
+    position: absolute;
+    left: 0;
+    top: 7px;
+    pointer-events: none;
+    transition: all .1s ease;
+}
+
+.xgroup input:focus~label,
+.xgroup input:not([value=""])~label {
+    top: -10px;
+    font-size: 11px;
+}
+
+.show-pass-icon-toggle {
+    cursor: pointer;
+    position: absolute;
+    padding: 15px;
+    top: -3px;
+    right: -10px;
+}
+
+.show-pass-icon-toggle img {
+    width: 14px;
+    height: 10px;
+}
+
+.mob-pass-body .forgotPassword {
+    margin-bottom: 13px;
+}
+
+.mob-pass-body .forgotPassword button {
+    padding: 18px 0;
+    font-family: montserrat, sans-serif;
+    font-size: 13px;
+    color: #42a2a2;
+    background: none;
+    border: none;
+}
+
+.loginSubmit-disable {
+    background-color: #989898;
+}
+
+.loginSubmit {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    letter-spacing: .5px;
+    background-color: #42a2a2;
+    font-size: 16px;
+    font-family: montserrat, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+@media only screen and (max-width: 769px) {
+    .formToast {
+        width: calc(100vw - 60px);
+        padding-top: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .container {
+        width: 100%;
+    }
+
+    .mob-pass-wrap .mob-pass-body,
+    .mob-pass-wrap .otp-body,
+    .otp-wrap .mob-pass-body,
+    .otp-wrap .otp-body {
+        text-align: center;
+        width: 45%;
+        margin: auto;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: space-evenly;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+
+    .mob-pass-wrap .mob-pass-body h2,
+    .mob-pass-wrap .otp-body h2,
+    .otp-wrap .mob-pass-body h2,
+    .otp-wrap .otp-body h2 {
+        font-size: 24px;
+    }
+
+    .mob-pass-body .xgroup {
+        margin-bottom: 75px !important;
+    }
+
+    .mob-pass-wrap .mob-pass-body input,
+    .mob-pass-wrap .otp-body input,
+    .otp-wrap .mob-pass-body input,
+    .otp-wrap .otp-body input {
+        font-size: 18px;
+    }
+
+    .mob-pass-body .xgroup label {
+        font-size: 16px;
+    }
+
+    .mob-pass-body .xgroup input:focus~label,
+    .mob-pass-body .xgroup input:not([value=""])~label {
+        top: -18px;
+        font-size: 14px;
+    }
+
+    .mob-pass-body .xgroup .msgs {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .show-pass-icon-toggle {
+        top: -5px;
+    }
+
+    .show-pass-icon-toggle img {
+        width: 20px;
+        height: 15px;
+    }
+
+    .mob-pass-body .forgotPassword {
+        margin: 35px !important;
+    }
+
+    .mob-pass-body .forgotPassword button {
+        font-size: 16px;
+    }
+
+    .loginSubmit {
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .mob-pass-wrap .formToast,
+    .otp-wrap .formToast {
+        top: 120px !important;
+        text-align: left;
+        width: 52%;
+        left: 25%;
+        font-size: 16px;
+        padding-top: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}

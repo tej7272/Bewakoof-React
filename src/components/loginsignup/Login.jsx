@@ -1,0 +1,102 @@
+import React, { useState } from 'react'
+import './Login.css'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../services/authSlice';
+
+const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastClass, setToastClass] = useState("");
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    let loginData = {
+      email,
+      password,
+      appType: 'ecommerce'
+    }
+
+      if (!email.includes('@gmail.com')) {
+        setToastMessage("Enter valid email");
+        setToastClass("formToastError");
+        setTimeout(() => {
+          setToastMessage('');
+        }, 6000);
+
+      }
+      else {
+
+          dispatch(loginUser(loginData))
+            .then((result) => {
+
+              if (result.payload) {
+                setEmail('');
+                setPassword('');
+                setToastMessage("User account created successfully");
+                setToastClass("formToastSuccess");
+                setTimeout(() => {
+                  setToastMessage('');
+                }, 6000);
+                
+                //  navigate('/quora')
+              }
+              else {
+                setToastMessage(result.error.message);
+                setToastClass("formToastError");
+                setTimeout(() => {
+                  setToastMessage('');
+                }, 6000);
+              }
+            })
+      }
+  }
+  
+  return (
+    <div className='loginWrapper'>
+      <div className='mob-pass-wrap'>
+        <div className='otp-desk-view-wrap'>
+          <div className='body container'>
+
+            <div className='mob-pass-body'>
+            {toastMessage && <span id="mob_toast_error" className={`formToast ${toastClass}`}>
+              <span>{toastMessage}.</span>
+              </span>}
+              <h2>Log in to your account</h2>
+              <form name="loginForm" noValidate="" autoComplete="off">
+
+                <div className="xgroup">
+                  <input autoComplete="off" className="" id="email_input" type="text" name="email" required value={email} onChange={(e)=>setEmail(e.target.value)} />
+                  <span className="bar"></span>
+                  <label htmlFor="email">Email</label>
+                </div>
+
+                <div className="xgroup input-mob-pass">
+                  <input autoComplete="off" id="mob_password" type="password" name="password" required value={password} onChange={(e)=>setPassword(e.target.value)} />
+                  <span className="bar"></span>
+                  <label htmlFor="password">Password</label>
+                  <div className="show-pass-icon-toggle">
+                    <img src="https://images.bewakoof.com/web/eye-open-1616575719.png" alt="password_toggle" />
+                  </div>
+                </div>
+
+                <div className="forgotPassword">
+                  <button type="button" id="web_forgot_password_link">Forgot Password?</button>
+                </div>
+
+                <button id="mob_login_password_submit" type="submit" className="loginSubmit loginSubmit-disable" onClick={handleLogin}>Login</button>
+              </form>
+              <span>Don't have an account? <Link to='/signup'>Sign Up</Link></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Login
