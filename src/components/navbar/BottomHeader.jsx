@@ -1,5 +1,6 @@
 import React from 'react'
 import './BottomHeader.css'
+import { Link } from 'react-router-dom'
 
 const BottomHeader = () => {
   return (
@@ -7,31 +8,31 @@ const BottomHeader = () => {
         <div className='bottomHeaderWrapper'>
             <ul>
                 <div className='tabNav'>
-                    <li><a href='/'>SHOP NOW</a></li>
+                    <li><Link to='/clothes'>SHOP NOW</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>MEN</a></li>
+                    <li><Link to='/men'>MEN</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>WOMEN</a></li>
+                    <li><Link to='/women'>WOMEN</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>ACCESSORIES</a></li>
+                    <li><a href='/new-arrival'>ACCESSORIES</a></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>LIVE NOW</a></li>
+                    <li><Link to='/bestseller'>LIVE NOW</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>AMERICAN PIMA</a></li>
+                    <li><Link to='/jeans'>AMERICAN PIMA</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>BEWAKOOF AIR</a></li>
+                    <li><Link to='/bewakoof'>BEWAKOOF AIR</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>OFFICIAL MERCH</a></li>
+                    <li><Link to='/bestseller'>OFFICIAL MERCH</Link></li>
                 </div>
                 <div className='tabNav'>
-                    <li><a href='/'>PLUS SIZE</a></li>
+                    <li><Link to='/joggers'>PLUS SIZE</Link></li>
                 </div>
             </ul>
         </div>

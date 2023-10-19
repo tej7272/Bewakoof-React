@@ -1,5 +1,5 @@
 .tabWrpr .bottomHeaderWrapper {
-    z-index: 3;
+    z-index: 3457;
     background-color: #fff;
     width: 100%;
     overflow-y: scroll;
@@ -22,9 +22,7 @@
     background-color: #fff;
     height: -webkit-fit-content;
     height: fit-content;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
     justify-content: space-around;
     text-align: center;
     margin-bottom: 0;

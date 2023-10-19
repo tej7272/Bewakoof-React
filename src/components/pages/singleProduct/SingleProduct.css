@@ -1,0 +1,194 @@
+.contentBox {
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    float: left;
+    margin-top: 20px;
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+}
+
+.product-total-image {
+    width: 100px;
+    position: relative;
+    text-align: center;
+    max-height: fit-content;
+}
+
+.image-box {
+    width: 100%;
+    position: relative;
+    margin-top: 2px;
+}
+
+.image-box img {
+    width: 85px;
+    height: 102px;
+    position: relative;
+    border-radius: 5px;
+
+}
+
+.icons {
+    background: transparent;
+    border: none;
+    font-size: 19px;
+}
+
+.product-image {
+    width: 83.33333%;
+    position: relative;
+    max-height: 100%;
+}
+
+.product-image-container {
+    position: absolute;
+    width: 100%;
+    max-height: fit-content;
+    padding: 0px 10px;
+    z-index: 1000;
+    margin-top: 0;
+    top: 0;
+}
+
+.product-image img {
+    width: 100%;
+    max-height: fit-content;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* description box styling start from here  */
+
+.summary-container{
+    overflow-x: scroll;
+    height: 80vh;
+}
+
+
+.description-container{
+    width:100%;
+    color: rgb(66, 65, 65);
+    padding: 2px 4px;
+}
+
+.description-content h2, .description-content h4, .description-content > span, .description-content .functionBtn{
+    display: block;
+    padding: 4px 0;
+}
+
+.description-content h2{   
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.description-content h4{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.seller-tag, .category, .fabric{
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 550;
+    margin-right: 10px;
+    text-transform:uppercase ;
+}
+
+.seller-tag{
+    background: gray;
+    color: white;
+}
+
+.category{
+    background: rgb(51, 188, 51);
+    color:#fff;
+}
+
+.fabric{
+    border: 1px solid gray;
+}
+
+.tribe-offer{
+    border-top: 2px solid rgb(230, 228, 228) ;
+    border-bottom: 2px solid rgb(230, 228, 228) ;
+    padding: 12px 4px;
+    color: gray;
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+.product-color{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.functionBtn{
+    margin:20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.cartButton, .wishlistButton{
+    text-transform: uppercase;
+    height: 44px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 17px!important;
+    border: none;
+
+}
+
+.cartButton{
+    background: #ffd84d;
+    width: 55%;
+}
+
+.wishlistButton{
+    width: 43%;
+}
+
+.item-offers{
+    border-bottom: 1px solid rgb(230, 228, 228) ;
+    padding: 10px 4px;
+    font-size: 20px;
+}
+
+.items-content{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.items-content h3{
+    font-size: 14px;
+}
+
+.items-content span{
+    font-size: 12px;
+}
+
+.items-content button{
+    border: none;
+    background: transparent;
+    width:5%;
+}
+
+
+
+
+@media (max-width:768px) {
+    .contentBox {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .product-image {
+        width: 100%;
+        padding-top: 125%;
+    }
+}

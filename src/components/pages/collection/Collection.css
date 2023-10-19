@@ -1,0 +1,276 @@
+.collectionWrapper {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    padding: 0px;
+}
+
+.collection-heading, .collectionItems{
+    padding: 0px 15px;
+}
+
+.mainHeading {
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+    position: relative;
+    margin-top: 15px;
+}
+
+.mainHeading .searchResults {
+    font: 700 16px montserrat-bold, sans-serif;
+    text-align: center;
+    display: inline-block;
+    float: none;
+    color: #2d2d2d;
+}
+
+.mainHeading .totalProductCount {
+    color: #949494;
+    padding-left: 10px;
+    font: 16px montserrat-regular, sans-serif;
+    line-height: normal;
+}
+
+/* collections container start from here  */
+
+.collectionItems {
+    max-height: 100%;
+    position: relative;
+    min-height: 727px;
+}
+
+.filterBoxMain {
+    width: 100%;
+}
+
+.filterHeadingDesktop {
+    padding: 12px 0;
+    border: none;
+}
+
+.filterHeadingDesktop h4 {
+    line-height: normal;
+    float: left;
+    color: rgba(45, 45, 45, .5);
+    font-family: montserrat-bold, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 0 8px 0 0;
+}
+
+
+.filterHeadingDesktop .clearAllBtn {
+    float: right;
+}
+
+.anchorStyle {
+    font-size: 12px;
+    color: #42a2a2;
+    font-family: montserrat-bold, sans-serif;
+    cursor: pointer;
+    display: block;
+    line-height: 18px;
+}
+
+.accordionWrapper .accordionBox {
+    cursor: pointer;
+    box-shadow: 0 1px 0 0 hsla(0, 0%, 80%, .5);
+}
+
+.filterHeader {
+    padding: 16px 0 30px;
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.filterHeader span {
+    display: block;
+    float: left;
+}
+
+.fillterContainer {
+    height: auto;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* items section start from here  */
+
+.itemsContainer {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sortByWrapper {
+    float: right;
+    text-align: right;
+    padding: 30px 15px 0;
+    position: relative;
+}
+
+.hoverMenuWrapper{
+    position: relative;
+}
+
+.sortByButton {
+    display: block;
+    float: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(45, 45, 45, .5);
+    border: none;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+    background: transparent;
+}
+
+.sortByButton>span {
+    color: #2d2d2d;
+    margin:0 8px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 550;
+
+}
+
+.icon_down {
+    vertical-align: middle;
+    font-size: 13px;
+    color: black;
+}
+
+.hoverMenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top:25px;
+    padding: 17px 0;
+    z-index: 500;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    min-width: 170px;
+    text-align: start;
+
+}
+
+
+.sortByButton:hover .hoverMenu {
+    display: block;
+
+}
+
+.hoverMenu li{
+    display: block;
+    padding: 0 10px;
+    text-transform: capitalize;
+    font-weight: 550;
+
+}
+
+.hoverMenu li a {
+    color: rgba(45,45,45,.7);
+    transition: all .2s ease-in 0s;
+    padding: 7px 10px;
+    display: block;
+    text-decoration: none;
+}
+
+/* Products container start from here  */
+
+.productContainer{
+    width: 100%;
+    float: left;
+}
+
+
+
+
+
+
+@media (min-width: 769px) {
+    .container {
+        width: 100%;
+    }
+
+    .mainHeading {
+        /* margin-top: 30px; */
+        padding: 0;
+        text-align: left;
+    }
+
+    .mainHeading .searchResults {
+        font-size: 24px;
+        text-align: left;
+        float: left;
+    }
+
+    .mainHeading .totalProductCount {
+        font-size: 24px;
+    }
+
+    .collectionItems {
+        /* margin-top: 40px; */
+    }
+
+    .fillterContainer {
+        width: 25%;
+        float: left;
+    }
+
+    .filterBoxMain {
+        padding: 10px 15px 13px;
+    }
+
+    /* items section start from here  */
+    .itemsContainer {
+        width: 75%;
+        margin-left: 25%;
+    }
+
+    .hoverMenu a:hover {
+        background-color: #f7f7f7;
+        color: #2d2d2d;
+    }
+
+    /* products container start from  */
+
+    .productContainer{
+        margin-top: 0;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 100;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+@media (max-width:769px) {
+    .hidden-xs {
+        display: none;
+    }
+    
+    .collection-heading, .collectionItems{
+        padding: 25px 15px;
+    }
+}

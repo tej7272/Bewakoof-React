@@ -1,6 +1,6 @@
  .headerDivWrapper {
      width: 100%;
-     z-index: 51;
+     z-index: 5178;
      position: fixed;
      top: 0;
      height: 79px;
@@ -136,6 +136,24 @@
      padding: 15px 10px;
      line-height: normal;
  }
+ 
+ .profile-icon{
+    cursor: pointer;
+ }
+
+ .profile{
+    display: none;
+ }
+
+ .profile-box:hover > .profile{
+    display: block;
+    position: absolute;
+    width: 180px;
+    max-height: fit-content;
+    left:-80px;
+    float: left;
+    background: #fff;
+ }
 
  .actionMenu img {
      width: 30px;
@@ -221,6 +239,7 @@
      right: -15px;
      top: calc(50% - 10px);
  }
+
 
 /* side navbar start from here  */
 

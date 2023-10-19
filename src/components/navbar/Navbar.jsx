@@ -4,8 +4,13 @@ import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
 import { BiSolidUser, BiSearch } from 'react-icons/bi';
 import { Link } from "react-router-dom";
+import Profile from "../support/Profile";
 
 const Navbar = () => {
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = user?.token;
+
     return (
         <div>
             <header className="headerDivWrapper hidden-sm hidden-xs">
@@ -26,20 +31,20 @@ const Navbar = () => {
                 <div className="mainHeaderWrapper">
                     <div className="mainHeader">
                         <div className="bewakoofLogoDiv float" >
-                            <a href="/">
+                            <Link to="/">
                                 <img src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg" alt="Bewakoof Logo" />
-                            </a>
+                            </Link>
                         </div>
                         <div className="dropDownWrapper float">
                             <div className="dropDownDiv">
                                 <span className="menuWrapper">
-                                    <a href="/" className="menuSelectWrap"><span>MEN</span></a>
+                                    <Link to="/men" className="menuSelectWrap"><span>MEN</span></Link>
                                 </span>
                                 <span className="menuWrapper">
-                                    <a href="/" className="menuSelectWrap"><span>WOMEN</span></a>
+                                    <Link to="/women" className="menuSelectWrap"><span>WOMEN</span></Link>
                                 </span>
                                 <span className="menuWrapper">
-                                    <a href="/" className="menuSelectWrap"><span>MOBILE COVERS</span></a>
+                                    <Link to="/mobile-cover" className="menuSelectWrap"><span>MOBILE COVERS</span></Link>
                                 </span>
                             </div>
                         </div>
@@ -52,21 +57,26 @@ const Navbar = () => {
                                         </a>
                                     </span>
                                     <span className="actionMenu">
-                                        <a href="/cart">
+                                        <Link to="/cart">
                                             <BsBag />
-                                        </a>
-                                    </span>
-                                    <span className="actionMenu">
-                                        <a href="/wishlist">
-                                            <FaRegHeart />
-                                        </a>
-                                    </span>
-                                    <span className="actionMenu">
-                                        <Link to="/login" >
-                                            <BiSolidUser />
                                         </Link>
-
                                     </span>
+                                    <span className="actionMenu">
+                                        <Link to="/wishlist">
+                                            <FaRegHeart />
+                                        </Link>
+                                    </span>
+                                    <span className="actionMenu">
+                                        {!token ? (<Link to="/login" style={{ textDecoration: 'none', color: "black" }}>
+                                            Login
+                                        </Link>) : (<div className="profile-box">
+                                            <BiSolidUser className="profile-icon" />
+                                            <div className="profile">
+                                               <Profile />
+                                            </div>
+                                        </div>)}
+                                    </span>
+
                                 </div>
                             </div>
                             <div className="mainHeaderCols searchWrapper">
@@ -91,9 +101,9 @@ const Navbar = () => {
                         <input type="checkbox" id="hambu" />
                         <div className="mActionMenu">
                             <span className="mBewakoofLogoDiv">
-                                <a href="/" title="Online Lifestyles Brand - Bewakoof.com">
+                                <Link to="/" title="Online Lifestyles Brand - Bewakoof.com">
                                     <img src="https://images.bewakoof.com/web/ic-web-head-bwk-primary-logo-eyes.svg" alt="Bewakoof_Logo" />
-                                </a>
+                                </Link>
                             </span>
                         </div>
                         <div className="iconMenuOption">

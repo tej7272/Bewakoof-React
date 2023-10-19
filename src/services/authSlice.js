@@ -10,7 +10,7 @@ const initialState = {
 const base_domain = 'https://academics.newtonschool.co'
 const projectID = 'dsc4zhei2sjh'
 
-export const signUpUser = createAsyncThunk('user/signupuser', async (signupData)=>{
+export const signUpUser = createAsyncThunk('signupuser', async (signupData)=>{
     const url = `${base_domain}/api/v1/user/signup`
 
     const options = {
@@ -26,7 +26,6 @@ export const signUpUser = createAsyncThunk('user/signupuser', async (signupData)
 
     if(res.ok){
         const data = await res.json();
-        console.log('signData', data);
         const userSignupData = {
             token : data.token,
             name : data.data.user.name,
@@ -37,11 +36,12 @@ export const signUpUser = createAsyncThunk('user/signupuser', async (signupData)
         return await data;
     }
     else{
-        throw new Error('User already exists');
+        const errorData = await res.json();
+        throw new Error(errorData.message);
     }
 });
 
-export const loginUser = createAsyncThunk('user/loginuser', async (loginData)=>{
+export const loginUser = createAsyncThunk('loginuser', async (loginData)=>{
     const url = `${base_domain}/api/v1/user/login`;
     const options = {
         method:'POST',
@@ -56,7 +56,6 @@ export const loginUser = createAsyncThunk('user/loginuser', async (loginData)=>{
 
     if(res.ok){
         const data = await res.json();
-        // console.log("loginData", data);
         const userLoginData = {
             token : data.token,
             name : data.data.name,
@@ -67,7 +66,8 @@ export const loginUser = createAsyncThunk('user/loginuser', async (loginData)=>{
         return await data;
     }
     else{
-        throw new Error ("provide correct password")
+        const errorData = await res.json();
+        throw new Error(errorData.message);
     }
 })
 
@@ -93,7 +93,7 @@ const authSlice = createSlice({
         .addCase(signUpUser.rejected,(state,action)=>{
             state.loading = "false";
             state.user = "";
-            state.error = action.error.message;
+            state.error = action.payload;
         })
         .addCase(loginUser.pending,state=>{
             state.loading = true;
@@ -108,7 +108,7 @@ const authSlice = createSlice({
         .addCase(loginUser.rejected,(state,action)=>{
             state.loading = false;
             state.user = "";
-            state.error = action.error.message;
+            state.error = action.payload;
         })
     }
 })

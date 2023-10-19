@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUpUser } from '../../services/authSlice';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(true);
   const [toastMessage, setToastMessage] = useState("");
   const [toastClass, setToastClass] = useState("");
+
+
+  const imageUrlOpen = 'https://images.bewakoof.com/web/eye-open-1616575719.png';
+  const imageUrlClose = 'https://images.bewakoof.com/web/eye-closed-1616575718.png';
+
+  const handleTogglePassword = () => {
+    if (togglePassword) {
+      setTogglePassword(false);
+    }
+    else {
+      setTogglePassword(true);
+    }
+  }
+
   const dispatch = useDispatch();
+  const location = useLocation();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,50 +40,48 @@ const Signup = () => {
       appType: 'ecommerce'
     }
 
-      if (!email.includes('@gmail.com')) {
-        setToastMessage("Enter a valid email");
+    const redirectPath =
+      new URLSearchParams(location.search).get('redirectPath') || '/';
+
+    if (!email.includes('@gmail.com')) {
+      setToastMessage("Enter a valid email");
+      setToastClass("formToastError");
+      setTimeout(() => {
+        setToastMessage('');
+      }, 5000);
+
+    }
+    else {
+
+      if (password.length >= 5) {
+
+        dispatch(signUpUser(signupData))
+          .then((result) => {
+
+            if (result.payload) {
+              setName('');
+              setEmail('');
+              setPassword('');
+              toast.success("User account created successfully");
+              window.location.href = redirectPath; 
+            }
+            else {
+              setToastMessage(result.error.message);
+              setToastClass("formToastError");
+              setTimeout(() => {
+                setToastMessage('');
+              }, 5000);
+            }
+          })
+      }
+      else {
+        setToastMessage("Password must be at least 5 characters long");
         setToastClass("formToastError");
         setTimeout(() => {
           setToastMessage('');
         }, 6000);
-
       }
-      else {
-
-        if (password.length >= 5) {
-
-          dispatch(signUpUser(signupData))
-            .then((result) => {
-
-              if (result.payload) {
-                setName('');
-                setEmail('');
-                setPassword('');
-                setToastMessage("User account created successfully");
-                setToastClass("formToastSuccess");
-                setTimeout(() => {
-                  setToastMessage('');
-                }, 6000);
-                
-                //  navigate('/quora')
-              }
-              else {
-                setToastMessage(result.error.message);
-                setToastClass("formToastError");
-                setTimeout(() => {
-                  setToastMessage('');
-                }, 6000);
-              }
-            })
-        }
-        else {
-          setToastMessage("Password must be at least 5 characters long");
-          setToastClass("formToastError");
-          setTimeout(() => {
-            setToastMessage('');
-          }, 6000);
-        }
-      }
+    }
   }
 
   return (
@@ -75,7 +91,7 @@ const Signup = () => {
           <div className='body container'>
 
             <div className='mob-pass-body'>
-            {toastMessage && <span id="mob_toast_error" className={`formToast ${toastClass}`}>
+              {toastMessage && <span id="mob_toast_error" className={`formToast ${toastClass}`}>
                 <span>{toastMessage}</span>
               </span>}
               <h2>Create an account</h2>
@@ -83,22 +99,19 @@ const Signup = () => {
 
                 <div className="xgroup">
                   <input autoComplete="off" className="" id="name_input" type="text" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
-                  <span className="bar"></span>
                   <label htmlFor="name">Name</label>
                 </div>
 
                 <div className="xgroup">
                   <input autoComplete="off" className="" id="email_input" type="text" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                  <span className="bar"></span>
                   <label htmlFor="email">Email</label>
                 </div>
 
                 <div className="xgroup input-mob-pass">
-                  <input autoComplete="off" id="mob_password" type="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                  <span className="bar"></span>
+                  <input autoComplete="off" id="mob_password" type={togglePassword ? "password" : ""} name="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label htmlFor="password">Password</label>
-                  <div className="show-pass-icon-toggle">
-                    <img src="https://images.bewakoof.com/web/eye-open-1616575719.png" alt="password_toggle" />
+                  <div className="show-pass-icon-toggle" >
+                    <img src={togglePassword ? imageUrlOpen : imageUrlClose} alt="password_toggle" onClick={handleTogglePassword} />
                   </div>
                 </div>
 

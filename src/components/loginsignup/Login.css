@@ -27,7 +27,7 @@
 
 .formToast {
     position: absolute;
-    top: 66px;
+    top: 10px;
     left: 30px;
     z-index: 1;
     width: 100%;
@@ -102,20 +102,12 @@
     height: 29px;
     padding: 5px 0;
     font-size: 14px;
+    font-weight: 700;
     outline: none;
     border: none;
     border-bottom: 1px solid #bcbcbc;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
     display: block;
     line-height: normal;
-}
-
-.xgroup .bar {
-    position: relative;
-    display: block;
-    width: 100%;
 }
 
 .xgroup label {
@@ -153,9 +145,7 @@
     margin-bottom: 13px;
 }
 
-.mob-pass-body .forgotPassword button {
-    padding: 18px 0;
-    font-family: montserrat, sans-serif;
+.forgotPassword button {
     font-size: 13px;
     color: #42a2a2;
     background: none;
@@ -202,9 +192,7 @@
         margin: auto;
         display: -ms-flexbox;
         display: flex;
-        -ms-flex-direction: column;
         flex-direction: column;
-        -ms-flex-pack: space-evenly;
         justify-content: space-evenly;
         height: 100%;
     }
@@ -252,7 +240,7 @@
     }
 
     .mob-pass-body .forgotPassword {
-        margin: 35px !important;
+        margin: 30px !important;
     }
 
     .mob-pass-body .forgotPassword button {
@@ -266,7 +254,7 @@
 
     .mob-pass-wrap .formToast,
     .otp-wrap .formToast {
-        top: 120px !important;
+        top: -15px !important;
         text-align: left;
         width: 52%;
         left: 25%;

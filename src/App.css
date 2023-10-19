@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: montserrat,sans-serif;
-  -webkit-overflow-scrolling:touch;
+  scrollbar-width: none;
 }
 
 abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
@@ -34,6 +34,7 @@ button, input, optgroup, select, textarea {
   color: inherit;
   font: inherit;
   margin: 0;
+  font-family: montserrat, sans-serif;
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {
