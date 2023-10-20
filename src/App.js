@@ -12,12 +12,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import MyAccount from './components/pages/myaccount/MyAccount';
 import MyOrders from './components/pages/myaccount/MyOrders';
+import Checkout from './components/pages/checkout/Checkout';
+import ThankyouPage from './components/pages/checkout/ThankyouPage';
+import { createContext, useState } from 'react';
   
+
+export const SearchContext = createContext();
 
 function App() {
 
 
+  const [searchTerm, setSearchTerm] = useState();
+
+
   return (
+    <SearchContext.Provider  value={{ searchTerm, setSearchTerm }} >
     <div className="App">
       <ToastContainer position="top-center"/>
       <Navbar />
@@ -30,12 +39,15 @@ function App() {
           <Route exact path='/wishlist' element={<Wishlist />} />
           <Route exact path='/account' element={<MyAccount />} />
           <Route exact path='/orders' element={<MyOrders />} />
+          <Route exact path='/checkout' element={<Checkout />} />
+          <Route exact path='/thankyou' element={<ThankyouPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
         </Routes>
         
       </div>
     </div>
+    </SearchContext.Provider>
   );
 }
 

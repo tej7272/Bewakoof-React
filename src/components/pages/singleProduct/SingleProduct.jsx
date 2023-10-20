@@ -4,14 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../../../services/productApi';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../services/cartSlice';
-import {addToWishlist } from '../../../services/wishlistSlice'
+import { addToWishlist } from '../../../services/wishlistSlice'
 import Loader from '../../../loader/Loader';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { AiFillHeart } from 'react-icons/ai';
 import { VscStarEmpty } from 'react-icons/vsc';
 import { CgNotes } from 'react-icons/cg';
 import { RiExchangeLine } from 'react-icons/ri';
-import {BiSolidOffer} from 'react-icons/bi'
+import { BiSolidOffer } from 'react-icons/bi'
 import { toast } from 'react-toastify';
 import HandleResponse from '../../support/HandleResponse';
 
@@ -43,40 +43,40 @@ const SingleProduct = () => {
     const currentLocation = window.location.pathname;
 
     const handleAddToCart = async () => {
-        if(!token){
+        if (!token) {
             navigate(`/login?redirectPath=${currentLocation}`);
         }
-        else{
+        else {
             try {
                 const actionResult = await dispatch(addToCart(productId));
                 if (addToCart.fulfilled.match(actionResult)) {
                     toast.success(actionResult.payload.message);
-                  
+
                 } else {
-                  toast.error(actionResult.error.message);
+                    toast.error(actionResult.error.message);
                 }
-              } catch (error) {
+            } catch (error) {
                 console.error('Error:', error);
-              }
+            }
         }
     };
 
-    const handleAddToWishlist = async ()=>{
-        if(!token){
+    const handleAddToWishlist = async () => {
+        if (!token) {
             navigate(`/login?redirectPath=${currentLocation}`);
         }
-        else{
-        try {
-            const actionResult = await dispatch(addToWishlist(productId));
-            if (addToWishlist.fulfilled.match(actionResult)) {
-                toast.success("Item is added to Wishlist");
-              
-            } else {
-              toast.error(`${actionResult.error.message}`);
+        else {
+            try {
+                const actionResult = await dispatch(addToWishlist(productId));
+                if (addToWishlist.fulfilled.match(actionResult)) {
+                    toast.success("Item is added to Wishlist");
+
+                } else {
+                    toast.error(`${actionResult.error.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-          } catch (error) {
-            console.error('Error:', error);
-          }
         }
     }
 
@@ -175,8 +175,8 @@ const SingleProduct = () => {
                                 </div>
 
                                 {addSignOff === '-' && <div style={{ fontSize: '13px', margin: '15px 4px' }}>
-                                    <div style={{padding:'8px 0'}}> <BiSolidOffer style={{fontSize:'15px', color:'rgb(51, 188, 51)'}} /> Get Rs.200 instant discount on your First Purchase above Rs.999. Coupon code -NEW200</div>
-                                    <div style={{padding:'8px 0'}}><BiSolidOffer style={{fontSize:'15px', color:'rgb(51, 188, 51)' }} /> Whistles! Get extra 20% Cashback on prepaid orders above Rs.499. Coupon code - NEW20. Applicable for new customers only!</div>
+                                    <div style={{ padding: '8px 0' }}> <BiSolidOffer style={{ fontSize: '15px', color: 'rgb(51, 188, 51)' }} /> Get Rs.200 instant discount on your First Purchase above Rs.999. Coupon code -NEW200</div>
+                                    <div style={{ padding: '8px 0' }}><BiSolidOffer style={{ fontSize: '15px', color: 'rgb(51, 188, 51)' }} /> Whistles! Get extra 20% Cashback on prepaid orders above Rs.499. Coupon code - NEW20. Applicable for new customers only!</div>
                                 </div>
                                 }
                             </div>
@@ -190,8 +190,8 @@ const SingleProduct = () => {
                                     </div>
                                     <button onClick={handleDescription}>{addSignDes}</button>
                                 </div>
-                                {addSignDes === '-' && <div style={{fontSize:'13px', margin:'10px 4px'}} >
-                                    <HandleResponse  htmlContent={productData?.description} />
+                                {addSignDes === '-' && <div style={{ fontSize: '13px', margin: '10px 4px' }} >
+                                    <HandleResponse htmlContent={productData?.description} />
                                 </div>}
                             </div>
 
@@ -207,7 +207,7 @@ const SingleProduct = () => {
                                 {addSignEx === "-" && <div style={{ fontSize: '13px', margin: '15px 4px' }}>Easy returns upto 15 days of delivery. Exchange available on select pincodes</div>}
                             </div>
 
-                            <div className='logos' style={{marginTop:'10px'}}>
+                            <div className='logos' style={{ marginTop: '10px' }}>
                                 <div className='logos-image'>
                                     <img src='https://images.bewakoof.com/web/cart-badge-trust.svg' alt='offer' />
                                     <h3 className="ProductText">100% SECURE PAYMENTS</h3>

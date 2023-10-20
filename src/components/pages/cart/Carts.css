@@ -93,7 +93,7 @@
     margin: 6px 0;
 }
 
-.item-details span {
+.item-details div > span {
     font-size: 14px;
     color: green;
     margin: 4px 0;

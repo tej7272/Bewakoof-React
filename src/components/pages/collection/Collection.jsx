@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Collection.css'
 import { AiOutlineDown } from 'react-icons/ai'
 import { useGetProductsQuery } from '../../../services/productApi'
 import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 import Loader from '../../../loader/Loader'
+import { SearchContext } from '../../../App'
 
 const Collection = () => {
 
     const { type } = useParams();
+    const {searchTerm} = useContext(SearchContext);
 
     let content;
 
@@ -39,7 +41,7 @@ const Collection = () => {
             break;
 
         case 'Customization':
-            content = "shirt";
+            content = "Shirt";
             break;
 
         case 'combos':
@@ -51,7 +53,7 @@ const Collection = () => {
             break;
 
         case 'hoodies-and-sweatshirts':
-            content = "jeans";
+            content = "Jeans";
             break;
 
         case 'joggers':
@@ -63,7 +65,7 @@ const Collection = () => {
             break;
 
         case 'buy-one-get-one-free':
-            content = "shirt";
+            content = "Shirt";
             break;
 
         case 'buy-3-for-1199':
@@ -86,8 +88,12 @@ const Collection = () => {
             content = "Jogger";
             break;
 
+        case 'searchPage':
+            content = searchTerm?searchTerm:"";
+            break;
+
         default:
-            content = 'all';
+            content = 'All';
             break;
 
     }
@@ -103,10 +109,13 @@ const Collection = () => {
         if (productData && type) {
             const apiData = productData?.data?.filter((product) =>
                 product.gender.toLowerCase() === type.toLowerCase() ||
+                product.gender.toLowerCase() === content.toLowerCase() ||
                 product.sellerTag.toLowerCase().includes(content.toLowerCase()) ||
                 product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
                 product.category.toLowerCase().includes(content.toLowerCase()) ||
-                product.brand.toLowerCase().includes(content.toLowerCase())
+                product.brand.toLowerCase().includes(content.toLowerCase()) || 
+               (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
+               (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
 
             );
 
@@ -115,14 +124,12 @@ const Collection = () => {
             setFilteredData(sortedData);
         }
 
-    }, [productData, type, sortBy, content])
+    }, [productData, type, sortBy, content,])
 
     // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
 
     const sortData = (data, option) => {
         switch (option) {
-            //   case 'new':
-            //     return data.sort((a, b) => a.date - b.date);
             case 'high':
                 return data.sort((a, b) => b.price - a.price);
             case 'low':
@@ -143,7 +150,7 @@ const Collection = () => {
                 <div className='collectionWrapper'>
                     <div className='collection-heading container '>
                         <div className='mainHeading'>
-                            <h1 className="searchResults">{content? content:"All items"}</h1>
+                            <h1 className="searchResults" style={{textTransform:'capitalize'}}>{content ? content : "All items"}</h1>
                             <span className="totalProductCount">({filteredData.length})</span>
                         </div>
                     </div>

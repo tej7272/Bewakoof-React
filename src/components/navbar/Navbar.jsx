@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Navbar.css'
 import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
@@ -6,6 +6,7 @@ import { BiSolidUser, BiSearch } from 'react-icons/bi';
 import { Link , useNavigate} from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
+import { SearchContext } from "../../App";
 
 const Navbar = () => {
 
@@ -13,8 +14,7 @@ const Navbar = () => {
     const token = user?.token;
 
     const {data:cartData} = useGetCartItemsQuery();
-
-    console.log("cartData", cartData)
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
 
 
     const currentLocation = window.location.pathname;
@@ -36,6 +36,16 @@ const Navbar = () => {
         else{
             navigate("/wishlist")
         }
+    }
+
+    const handleSearch = (e)=>{
+        e.preventDefault();
+        navigate('/searchPage')
+    }
+
+    const clearInput = (e)=>{
+        e.preventDefault();
+        setSearchTerm('');
     }
 
     return (
@@ -108,8 +118,8 @@ const Navbar = () => {
                             </div>
                             <div className="mainHeaderCols searchWrapper">
                                 <div className="icon-addon addon-sm">
-                                    <form className="searchContainer">
-                                        <input className="searchInput form-controls" placeholder="Search by product, category or collection" type="text" autoComplete="off" />
+                                    <form className="searchContainer" onSubmit={handleSearch}>
+                                        <input className="searchInput form-controls" placeholder="Search by product, category or collection" type="text" autoComplete="off"  value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}  onClick={clearInput}/>
                                         <BiSearch />
                                     </form>
                                     <div className="seperator "></div>

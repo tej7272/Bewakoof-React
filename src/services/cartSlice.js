@@ -77,17 +77,13 @@ const cartSlice = createSlice({
         builder
         .addCase(addToCart.pending, state => {
             state.loading=true;
-            // state.cart = [];
-            // state.error = ""
         })
         .addCase(addToCart.fulfilled,(state, action)=>{
             state.loading=false;
-            state.cart = action.payload.item;
-            // state.error = "";
+            state.cart = action.payload.cart;
         })
         .addCase(addToCart.rejected,(state,action)=>{
             state.loading = false;
-            // state.cart = [];
             state.error = action.payload;
         })
         .addCase(deleteFromCart.pending, state => {
@@ -95,7 +91,7 @@ const cartSlice = createSlice({
         })
         .addCase(deleteFromCart.fulfilled, (state,action)=>{
             state.loading = false;
-            state.cart = action.payload.item;
+            state.cart = action.payload.cart;
         })
         .addCase(deleteFromCart.rejected, (state, action) => {
             state.loading = false;

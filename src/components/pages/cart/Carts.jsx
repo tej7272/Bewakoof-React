@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './Carts.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGetCartItemsQuery } from '../../../services/productApi';
 import CartsCard from './CartsCard';
 import Loader from '../../../loader/Loader';
@@ -16,6 +16,11 @@ const Carts = () => {
         refetch();
         
     }, [refetch])
+
+    const navigate = useNavigate();
+    const handleCheckout = ()=>{
+        navigate("/checkout")
+    }
 
 
 
@@ -62,7 +67,7 @@ const Carts = () => {
                                         <span>Total</span>
                                         <h3><span>₹</span>{cartData?.data?.totalPrice}</h3>
                                     </div>
-                                    <button>ADD ADDRESS</button>
+                                    <button onClick={handleCheckout}>Checkout</button>
                                 </div>
                                 <div className='logos'>
                                     <div className='logos-image'>
