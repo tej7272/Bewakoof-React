@@ -23,7 +23,7 @@ const Profile = () => {
         <Link to="/wishlist" >My Wishlist</Link>
       </div>
       <div className='profile-items'>
-        <Link to="/account/order" >My orders</Link>
+        <Link to="/orders" >My orders</Link>
       </div>
       <div className='profile-items'>
         <button type='submit' onClick={handleLogout}>Logout</button>
