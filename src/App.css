@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: montserrat,sans-serif;
+  font-family: 'Poppins', sans-serif;
   scrollbar-width: none;
 }
 
@@ -15,10 +15,6 @@ abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite
   vertical-align: baseline;
   background: transparent;
 }
-
-/* .mainContainer{
-
-} */
 
 
 .App{
@@ -35,6 +31,11 @@ button, input, optgroup, select, textarea {
   font: inherit;
   margin: 0;
   font-family: montserrat, sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {

@@ -120,7 +120,7 @@
 
  .activeMenuWrp {
      float: right;
-     padding-right: 0 ;
+     padding-right: 0;
  }
 
  .actionMenu {
@@ -132,27 +132,34 @@
      z-index: 1021;
  }
 
+ .actionMenu button {
+     padding: 15px 10px;
+     line-height: normal;
+     border: none;
+     background: transparent;
+ }
+
  .actionMenu a {
      padding: 15px 10px;
      line-height: normal;
  }
- 
- .profile-icon{
-    cursor: pointer;
+
+ .profile-icon {
+     cursor: pointer;
  }
 
- .profile{
-    display: none;
+ .profile {
+     display: none;
  }
 
- .profile-box:hover > .profile{
-    display: block;
-    position: absolute;
-    width: 180px;
-    max-height: fit-content;
-    left:-80px;
-    float: left;
-    background: #fff;
+ .profile-box:hover>.profile {
+     display: block;
+     position: absolute;
+     width: 180px;
+     max-height: fit-content;
+     left: -80px;
+     float: left;
+     background: #fff;
  }
 
  .actionMenu img {
@@ -173,7 +180,7 @@
  .searchMyAccount .searchWrapper {
      position: relative;
      width: calc(100% - 150px);
-    
+
  }
 
  .icon-addon {
@@ -241,7 +248,7 @@
  }
 
 
-/* side navbar start from here  */
+ /* side navbar start from here  */
 
  .sideNavBox .mHeaderDiv {
      width: 100%;
@@ -370,15 +377,20 @@
      margin-left: 0.25rem !important;
  }
 
+ .iconMenuOption span button {
+    border:none;
+    background: transparent;
+ }
+
  .iconMenuOption span .cartCountHome {
      font-family: montserrat-bold, sans-serif;
-     font-size: 9px;
-     width: 15px;
-     height: 15px;
+     font-size: 10px;
+     width: 14px;
+     height: 14px;
      background: #f45440;
      color: #fff;
-     top: 27px;
-     right: 12px;
+     top: 29px;
+     right: 13px;
      padding-top: 1.5px;
  }
 

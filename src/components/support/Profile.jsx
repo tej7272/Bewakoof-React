@@ -17,7 +17,7 @@ const Profile = () => {
     <div className='profile-section'>
       <div className='profile-name'>Hii, {name}</div>
       <div className='profile-items'>
-        <Link to="/account/account">My Account</Link>
+        <Link to="/account">My Account</Link>
       </div>
       <div className='profile-items'>
         <Link to="/wishlist" >My Wishlist</Link>

@@ -10,9 +10,13 @@ import Wishlist from './components/pages/wishlist/Wishlist';
 import Carts from './components/pages/cart/Carts';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import MyAccount from './components/pages/myaccount/MyAccount';
+import MyOrders from './components/pages/myaccount/MyOrders';
   
 
 function App() {
+
+
   return (
     <div className="App">
       <ToastContainer position="top-center"/>
@@ -24,9 +28,10 @@ function App() {
           <Route exact path='/:type/:productId' element={<SingleProduct />} />
           <Route exact path='/cart' element={<Carts />} />
           <Route exact path='/wishlist' element={<Wishlist />} />
+          <Route exact path='/account' element={<MyAccount />} />
+          <Route exact path='/orders' element={<MyOrders />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-
         </Routes>
         
       </div>

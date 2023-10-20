@@ -3,13 +3,40 @@ import './Navbar.css'
 import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
 import { BiSolidUser, BiSearch } from 'react-icons/bi';
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import Profile from "../support/Profile";
+import { useGetCartItemsQuery } from "../../services/productApi";
 
 const Navbar = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user?.token;
+
+    const {data:cartData} = useGetCartItemsQuery();
+
+    console.log("cartData", cartData)
+
+
+    const currentLocation = window.location.pathname;
+    const navigate = useNavigate();
+
+    const handleCartBtn = ()=>{
+        if(!token){
+            navigate(`/login?redirectPath=${currentLocation}`);
+        }
+        else{
+            navigate("/cart")
+        }
+    }
+
+    const handleWishlistBtn = ()=>{
+        if(!token){
+            navigate(`/login?redirectPath=${currentLocation}`);
+        }
+        else{
+            navigate("/wishlist")
+        }
+    }
 
     return (
         <div>
@@ -57,19 +84,19 @@ const Navbar = () => {
                                         </a>
                                     </span>
                                     <span className="actionMenu">
-                                        <Link to="/cart">
+                                        <button type="submit" onClick={handleCartBtn}>
                                             <BsBag />
-                                        </Link>
+                                        </button>
                                     </span>
                                     <span className="actionMenu">
-                                        <Link to="/wishlist">
+                                        <button type="submit" onClick={handleWishlistBtn}>
                                             <FaRegHeart />
-                                        </Link>
+                                        </button>
                                     </span>
                                     <span className="actionMenu">
                                         {!token ? (<Link to="/login" style={{ textDecoration: 'none', color: "black" }}>
                                             Login
-                                        </Link>) : (<div className="profile-box">
+                                        </Link>) : (<div className="profile-box" style={{paddingTop:'5px'}}>
                                             <BiSolidUser className="profile-icon" />
                                             <div className="profile">
                                                <Profile />
@@ -92,6 +119,10 @@ const Navbar = () => {
                     </div>
                 </div>
             </header>
+
+            {/* side navbar start from here  */}
+
+
             <div className="sideNavBox">
                 <header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
                     <div className="noMg mHeader">
@@ -115,17 +146,17 @@ const Navbar = () => {
                                 </form>
                             </span>
                             <span>
-                                <div>
+                                <button type="submit" onClick={handleWishlistBtn} >
                                     <img src="https://images.bewakoof.com/web/ic-web-head-wishlist.svg" alt="wishlist-icon" className="header-icon" />
-                                </div>
+                                </button>
                             </span>
                             <span>
-                                <a href="/cart">
+                                <button type="submit" onClick={handleCartBtn}>
                                     <span>
                                         <img src="https://images.bewakoof.com/web/ic-web-head-cart.svg" alt="cart-icon" className="header-icon" />
-                                        <span className="cartCount cartCountHome" >2</span>
+                                        <span className="cartCount cartCountHome" >{cartData?.results}</span>
                                     </span>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>

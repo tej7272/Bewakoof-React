@@ -44,7 +44,6 @@ const SingleProduct = () => {
 
     const handleAddToCart = async () => {
         if(!token){
-            // navigate("/login");
             navigate(`/login?redirectPath=${currentLocation}`);
         }
         else{
@@ -64,7 +63,6 @@ const SingleProduct = () => {
 
     const handleAddToWishlist = async ()=>{
         if(!token){
-            // navigate("/login");
             navigate(`/login?redirectPath=${currentLocation}`);
         }
         else{

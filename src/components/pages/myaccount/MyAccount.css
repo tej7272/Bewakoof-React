@@ -1,0 +1,114 @@
+.account-container{
+    float: left;
+    width: 100%;
+}
+
+.account-container h1{
+    font-size:30px;
+}
+
+.account-separater{
+    border-left: 1px solid gray;
+    max-height: 100%;
+}
+
+.account-elements{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.account-orders{
+    width:17%;
+}
+
+.account-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.account-orders h3{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 7px;
+    display: inline-block;
+}
+
+.account-orders a > span{
+    font-size: 12px;
+}
+
+.account-orders > span{
+    font-size: 12px;
+}
+
+.account-separater-bottom{
+    border-top: 1px solid gray;
+    max-width: 100%;
+}
+
+.account-body{
+    margin: 100px 0;
+    display: flex;
+}
+
+.account-body-content{
+    width: 30%;
+}
+
+.account-body-content h3{
+    opacity: .6;
+    font-size: 20px;
+    color: #181818;
+    margin: 0 0 30px;
+    padding: 40px 0 0;
+}
+
+.account-body-content a{
+    font-size: 14px;
+    color: #51cccc;
+    border-radius: 2px;
+    border: 1px solid #51cccc;
+    padding: 7px 14px;
+    display: block;
+    float: left;
+    line-height: 20px;
+}
+
+.account-body-content img{
+    height: 80%;
+}
+
+
+@media (max-width:769px){
+    .account-elements{
+        display: block;
+        /* margin-top: 40px; */
+    }
+
+    .account-separater{
+        border-top: 1px solid gray;
+        max-width: 100%;
+        margin: 20px 0;
+    }
+
+    .account-orders{
+        width: 100%;
+    }
+
+    .account-heading{
+        justify-content: left;
+    }
+
+    .account-heading h3{
+        margin-right: 10px;
+    }
+
+    .account-body {
+        justify-content: space-between;
+    }
+
+
+}
