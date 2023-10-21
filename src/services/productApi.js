@@ -20,7 +20,7 @@ const myParams = {
 
 }
 
-const createRequest = (url) => ({ url, headers: productsHeader, params: myParams });
+const createRequest = (url) => ({ url, headers: productsHeader, params: myParams  });
 const createRequestAuth = (url) => ({ url, headers: authorizeHeaders, params: myParams });
 
 export const productApi = createApi({

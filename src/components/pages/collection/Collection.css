@@ -104,6 +104,17 @@
     padding-right: 0;
 }
 
+.filter-btn{
+    display: block;
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 13px;
+    padding: 5px 7px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
 /* items section start from here  */
 
 .itemsContainer {

@@ -66,7 +66,6 @@ export const deleteFromCart = createAsyncThunk('cart/deletefromcart',async (prod
     }
 }) 
 
-
 const cartSlice = createSlice({
     name:'cart',
     initialState,
@@ -97,7 +96,6 @@ const cartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         })
-       
     }
 })
 

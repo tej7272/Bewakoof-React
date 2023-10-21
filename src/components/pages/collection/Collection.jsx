@@ -1,16 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Collection.css'
-import { AiOutlineDown } from 'react-icons/ai'
 import { useGetProductsQuery } from '../../../services/productApi'
 import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 import Loader from '../../../loader/Loader'
 import { SearchContext } from '../../../App'
+import { AiOutlineDown } from 'react-icons/ai'
+import { HiOutlineChevronDown } from 'react-icons/hi';
+import { subCategory, gender, brand, color, sellerTag } from '../../data/data'
+// import { useDispatch } from 'react-redux'
+// import { getItemsData } from '../../../services/cartSlice'
 
 const Collection = () => {
 
     const { type } = useParams();
-    const {searchTerm} = useContext(SearchContext);
+    const { searchTerm } = useContext(SearchContext);
+    const [toggle, setToggle] = useState({ gender: false, subCategory: false, sellerTag: false, brand: false, color: false })
+
+    // const [value, setValue] = useState({});
+    const [genderVal, setGenderVal] = useState('');
+    const [subCategoryVal, setSubCategoryVal] = useState('');
+    const [brandVal, setBrandVal] = useState('');
+    const [colorVal, setColorVal] = useState('');
+    const [sellerTagVal, setSellerTagVal] = useState('');
 
     let content;
 
@@ -89,7 +101,7 @@ const Collection = () => {
             break;
 
         case 'searchPage':
-            content = searchTerm?searchTerm:"";
+            content = searchTerm ? searchTerm : "";
             break;
 
         default:
@@ -98,47 +110,102 @@ const Collection = () => {
 
     }
     const [sortBy, setSortBy] = useState("Popular");
-
     const [filteredData, setFilteredData] = useState([]);
+    // const [productData, setProductData] = useState([]);
 
     // let priceArray = [];
 
     const { data: productData, isLoading } = useGetProductsQuery();
 
+    // useEffect(() => {
+    //     if (productData && type) {
+    //         const apiData = productData?.data?.filter((product) =>
+    //             product.gender.toLowerCase() === type.toLowerCase() ||
+    //             product.gender.toLowerCase() === content.toLowerCase() ||
+    //             product.sellerTag.toLowerCase().includes(content.toLowerCase()) ||
+    //             product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
+    //             product.category.toLowerCase().includes(content.toLowerCase()) ||
+    //             product.brand.toLowerCase().includes(content.toLowerCase()) ||
+    //             (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
+    //             (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
+
+    //         );
+
+    //         // priceArray = apiData?.map((element) => element.price)
+    //         setFilteredData(apiData);
+    //     }
+
+    // }, [productData, sortBy, content, subCategoryVal, type])
+
+
+
     useEffect(() => {
         if (productData && type) {
-            const apiData = productData?.data?.filter((product) =>
-                product.gender.toLowerCase() === type.toLowerCase() ||
-                product.gender.toLowerCase() === content.toLowerCase() ||
-                product.sellerTag.toLowerCase().includes(content.toLowerCase()) ||
-                product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
-                product.category.toLowerCase().includes(content.toLowerCase()) ||
-                product.brand.toLowerCase().includes(content.toLowerCase()) || 
-               (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
-               (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
+            const apiData = productData?.data?.filter((product) => {
+                const initialFilter =
+                    product.gender.toLowerCase() === type.toLowerCase() ||
+                    product.gender.toLowerCase() === content.toLowerCase() ||
+                    product.sellerTag.toLowerCase().includes(content.toLowerCase()) ||
+                    product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
+                    product.category.toLowerCase().includes(content.toLowerCase()) ||
+                    product.brand.toLowerCase().includes(content.toLowerCase()) ||
+                    (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
+                    (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
 
-            );
 
-            // priceArray = apiData?.map((element) => element.price)
-            const sortedData = sortData(apiData, sortBy);
-            setFilteredData(sortedData);
+                const isMenOrWomen = type === 'men' || type === 'women';
+                const genderFilter = isMenOrWomen || (type !== 'men' && type !== 'women' && (!genderVal || product.gender.toLowerCase() === genderVal.toLowerCase()));
+                const colorFilter = !colorVal || product.color.toLowerCase() === colorVal.toLowerCase();
+                const subCategoryFilter = !subCategoryVal || product.subCategory.toLowerCase() === subCategoryVal.toLowerCase();
+                const brandFilter = !brandVal || product.brand.toLowerCase() === brandVal.toLowerCase();
+                const sellerTagFilter = !sellerTagVal || product.sellerTag.toLowerCase() === sellerTagVal.toLowerCase();
+
+                return initialFilter && colorFilter && genderFilter && brandFilter && subCategoryFilter && sellerTagFilter;
+            });
+
+            setFilteredData(apiData);
         }
+    }, [productData, sortBy, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
 
-    }, [productData, type, sortBy, content,])
+
+
+
 
     // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
 
-    const sortData = (data, option) => {
-        switch (option) {
-            case 'high':
-                return data.sort((a, b) => b.price - a.price);
-            case 'low':
-                return data.sort((a, b) => a.price - b.price);
-            case 'popular':
-            default:
-                return data;
-        }
-    };
+    // const sortData = (data, option) => {
+    //     switch (option) {
+    //         case 'high':
+    //             return data.sort((a, b) => b.price - a.price);
+    //         case 'low':
+    //             return data.sort((a, b) => a.price - b.price);
+    //         case 'popular':
+    //         default:
+    //             return data;
+    //     }
+    // };
+
+    // useEffect(()=>{
+    //     const itemsData = filteredData.filter((element)=>
+    //         element.gender.toLowerCase() === genderValue.toLowerCase()
+    //     )
+
+    //     setProductData(itemsData)
+
+
+    // },[filteredData, genderValue])
+
+    // useEffect(() => {
+    //     console.log("gender", value.gender);
+    // }, [value.gender]);
+
+    const handleClearAll = () => {
+        setBrandVal('');
+        setColorVal('');
+        setGenderVal('');
+        setSellerTagVal('');
+        setSubCategoryVal('');
+    }
 
     const handleSortChange = (option) => {
         setSortBy(option);
@@ -150,8 +217,8 @@ const Collection = () => {
                 <div className='collectionWrapper'>
                     <div className='collection-heading container '>
                         <div className='mainHeading'>
-                            <h1 className="searchResults" style={{textTransform:'capitalize'}}>{content ? content : "All items"}</h1>
-                            <span className="totalProductCount">({filteredData.length})</span>
+                            <h1 className="searchResults" style={{ textTransform: 'capitalize' }}>{content ? content : "All items"}</h1>
+                            <span className="totalProductCount">({filteredData?.length})</span>
                         </div>
                     </div>
                     <div className='collectionItems container'>
@@ -160,68 +227,127 @@ const Collection = () => {
                                 <div className="filterHeadingDesktop">
                                     <h4>Filters</h4>
                                     <div className="clearAllBtn">
-                                        <span className="anchorStyle">Clear All</span>
+                                        <span className="anchorStyle" onClick={handleClearAll}>Clear All</span>
                                     </div>
                                 </div>
                                 <div className="accordionWrapper">
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>gender</span> <i className="icon_down" style={{ float: 'right' }}> </i>
+
+                                    {type !== 'men' && type !== 'women' && <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={() => setToggle({ ...toggle, gender: !toggle.gender })}>
+                                            <span>gender</span> <HiOutlineChevronDown style={{ float: 'right' }} />
                                         </div>
-                                    </div>
+                                        {toggle.gender && <div style={{ margin: '4px 0' }}>
+                                            {gender.map((element, index) => (
+                                                <button key={index} value={element} className='filter-btn' onClick={() => setGenderVal(element)}>{element}</button>
+                                            ))}
+                                        </div>}
+                                    </div>}
+
+
                                     <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>category</span><i className="icon_bullet bulletIcon"></i>
-                                            <i className="icon_down" style={{ float: 'right' }}></i>
+                                        <div className="filterHeader clearfix" onClick={() => setToggle({ ...toggle, subCategory: !toggle.subCategory })}>
+                                            <span>subCategory</span><HiOutlineChevronDown style={{ float: 'right' }} />
                                         </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>sizes</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>Brand</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>color</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>design</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>fit</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>sleeve</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>neck</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>type</span><i className="icon_down" style={{ float: 'right' }}></i>
-                                        </div>
+                                        {toggle.subCategory && <div style={{ margin: '4px 0' }}>
+                                            {subCategory.map((element, index) => (
+                                                <button key={index} value={element} className='filter-btn' onClick={() => setSubCategoryVal(element)}>{element}</button>
+                                            ))}
+                                        </div>}
                                     </div>
 
 
                                     <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix">
-                                            <span>Sort By</span><i className="icon_bullet bulletIcon"></i><i className="icon_down" style={{ float: 'right' }}></i>
+                                        <div className="filterHeader clearfix" onClick={() => setToggle({ ...toggle, brand: !toggle.brand })}>
+                                            <span>Brand</span><HiOutlineChevronDown style={{ float: 'right' }} />
                                         </div>
+
+                                        {toggle.brand && <div style={{ margin: '4px 0' }}>
+                                            {brand.map((element, index) => (
+                                                <button key={index} value={element} className='filter-btn' onClick={() => setBrandVal(element)}>{element}</button>
+                                            ))}
+                                        </div>}
+
                                     </div>
+
+                                    <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={() => setToggle({ ...toggle, color: !toggle.color })}>
+                                            <span>color</span><HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.color && <div style={{ margin: '4px 0' }}>
+                                            {color.map((element, index) => (
+                                                <button key={index} value={element} className='filter-btn' onClick={() => setColorVal(element)}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div>
+
+                                    <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={() => setToggle({ ...toggle, sellerTag: !toggle.sellerTag })}>
+                                            <span>SellerTag</span><HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.sellerTag && <div style={{ margin: '4px 0' }}>
+                                            {sellerTag.map((element, index) => (
+                                                <button key={index} value={element} className='filter-btn' onClick={() => setSellerTagVal(element)}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div>
+                                    {/*
+
+                                    <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, fit: !toggle.fit })}>
+                                            <span>fit</span><HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.fit && <div style={{margin:'4px 0'}}>
+                                            {fit.map((element, index)=>(
+                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, fit:element})}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div>
+
+                                    <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, sleeve: !toggle.sleeve })}>
+                                            <span>sleeve</span><HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.sleeve && <div style={{margin:'4px 0'}}>
+                                            {sleeve.map((element, index)=>(
+                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, sleeve:element})}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div>
+                                    <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, neck: !toggle.neck })}>
+                                            <span>Neck</span><HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.neck && <div style={{margin:'4px 0'}}>
+                                            {neck.map((element, index)=>(
+                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, neck:element})}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div> */}
+
+                                    {/* <div className="accordionBox clearfix">
+                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, sort: true })}>
+                                            <span>Sort By</span> <HiOutlineChevronDown style={{ float: 'right' }} />
+                                        </div>
+
+                                        {toggle.gender && <div style={{margin:'4px 0'}}>
+                                            {gender.map((element)=>(
+                                                <button value={element} className='filter-btn' onClick={()=>setValue({...value, gender:element})}>{element}</button>
+                                            ))}
+                                        </div>}
+
+                                    </div> */}
+
+
                                 </div>
                             </div>
                         </div>
@@ -239,9 +365,6 @@ const Collection = () => {
                                             <ul>
                                                 <li onClick={() => handleSortChange('popular')}>popular
                                                     {/* <a aria-current="false" href="/sort=popular" style={{ color: 'rgb(66, 162, 162)' }} onClick={()=>handleSortChange('popular')} >Popular</a> */}
-                                                </li>
-                                                <li onClick={() => handleSortChange('new')}> new
-                                                    {/* <a aria-current="false" href="/sort=new" onClick={()=>handleSortChange('new')} >New</a> */}
                                                 </li>
                                                 <li>
                                                     <a aria-current="false" href="/sort=high" onClick={() => handleSortChange('high')} >Price : High to Low</a>
