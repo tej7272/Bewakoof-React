@@ -7,8 +7,11 @@ import { Link , useNavigate} from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
 import { SearchContext } from "../../App";
+// import { Drawer } from "@mui/material";
 
 const Navbar = () => {
+
+    // const [open, setOpen] = useState(false);
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user?.token;
@@ -137,9 +140,12 @@ const Navbar = () => {
                 <header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
                     <div className="noMg mHeader">
                         <label htmlFor="hambu" className="mLogoDiv">
-                            <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn" />
+                            <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn"  />
                         </label>
-                        <input type="checkbox" id="hambu" />
+                        <input type="checkbox" id="hambu"
+                        //  onClick={()=>setOpen(true)}
+                          />
+                        {/* <Drawer open={open} onClose={()=>setOpen(false)}><div style={{width:'150px', border:'1px solid red', height:'200px'}}></div></Drawer> */}
                         <div className="mActionMenu">
                             <span className="mBewakoofLogoDiv">
                                 <Link to="/" title="Online Lifestyles Brand - Bewakoof.com">

@@ -17,7 +17,6 @@ const Collection = () => {
     const { searchTerm } = useContext(SearchContext);
     const [toggle, setToggle] = useState({ gender: false, subCategory: false, sellerTag: false, brand: false, color: false })
 
-    // const [value, setValue] = useState({});
     const [genderVal, setGenderVal] = useState('');
     const [subCategoryVal, setSubCategoryVal] = useState('');
     const [brandVal, setBrandVal] = useState('');
@@ -111,32 +110,10 @@ const Collection = () => {
     }
     const [sortBy, setSortBy] = useState("Popular");
     const [filteredData, setFilteredData] = useState([]);
-    // const [productData, setProductData] = useState([]);
 
-    // let priceArray = [];
+    let priceArray = [];
 
     const { data: productData, isLoading } = useGetProductsQuery();
-
-    // useEffect(() => {
-    //     if (productData && type) {
-    //         const apiData = productData?.data?.filter((product) =>
-    //             product.gender.toLowerCase() === type.toLowerCase() ||
-    //             product.gender.toLowerCase() === content.toLowerCase() ||
-    //             product.sellerTag.toLowerCase().includes(content.toLowerCase()) ||
-    //             product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
-    //             product.category.toLowerCase().includes(content.toLowerCase()) ||
-    //             product.brand.toLowerCase().includes(content.toLowerCase()) ||
-    //             (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
-    //             (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
-
-    //         );
-
-    //         // priceArray = apiData?.map((element) => element.price)
-    //         setFilteredData(apiData);
-    //     }
-
-    // }, [productData, sortBy, content, subCategoryVal, type])
-
 
 
     useEffect(() => {
@@ -164,14 +141,14 @@ const Collection = () => {
             });
 
             setFilteredData(apiData);
+
         }
     }, [productData, sortBy, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
 
+    priceArray = filteredData?.map((element) => element.price)
 
-
-
-
-    // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
+    const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
+    console.log("max price", maxPrice);
 
     // const sortData = (data, option) => {
     //     switch (option) {
@@ -185,19 +162,6 @@ const Collection = () => {
     //     }
     // };
 
-    // useEffect(()=>{
-    //     const itemsData = filteredData.filter((element)=>
-    //         element.gender.toLowerCase() === genderValue.toLowerCase()
-    //     )
-
-    //     setProductData(itemsData)
-
-
-    // },[filteredData, genderValue])
-
-    // useEffect(() => {
-    //     console.log("gender", value.gender);
-    // }, [value.gender]);
 
     const handleClearAll = () => {
         setBrandVal('');
@@ -276,7 +240,7 @@ const Collection = () => {
 
                                         {toggle.color && <div style={{ margin: '4px 0' }}>
                                             {color.map((element, index) => (
-                                                <button key={index} value={element} className='filter-btn' onClick={() => setColorVal(element)}>{element}</button>
+                                                <button key={index} value={element} className='filter-color-btn' onClick={() => setColorVal(element)} style={{ backgroundColor: `${element}` }}></button>
                                             ))}
                                         </div>}
 
@@ -294,63 +258,11 @@ const Collection = () => {
                                         </div>}
 
                                     </div>
-                                    {/*
-
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, fit: !toggle.fit })}>
-                                            <span>fit</span><HiOutlineChevronDown style={{ float: 'right' }} />
-                                        </div>
-
-                                        {toggle.fit && <div style={{margin:'4px 0'}}>
-                                            {fit.map((element, index)=>(
-                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, fit:element})}>{element}</button>
-                                            ))}
-                                        </div>}
-
-                                    </div>
-
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, sleeve: !toggle.sleeve })}>
-                                            <span>sleeve</span><HiOutlineChevronDown style={{ float: 'right' }} />
-                                        </div>
-
-                                        {toggle.sleeve && <div style={{margin:'4px 0'}}>
-                                            {sleeve.map((element, index)=>(
-                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, sleeve:element})}>{element}</button>
-                                            ))}
-                                        </div>}
-
-                                    </div>
-                                    <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, neck: !toggle.neck })}>
-                                            <span>Neck</span><HiOutlineChevronDown style={{ float: 'right' }} />
-                                        </div>
-
-                                        {toggle.neck && <div style={{margin:'4px 0'}}>
-                                            {neck.map((element, index)=>(
-                                                <button key={index} value={element} className='filter-btn' onClick={()=>setValue({...value, neck:element})}>{element}</button>
-                                            ))}
-                                        </div>}
-
-                                    </div> */}
-
-                                    {/* <div className="accordionBox clearfix">
-                                        <div className="filterHeader clearfix" onClick={()=>setToggle({ ...toggle, sort: true })}>
-                                            <span>Sort By</span> <HiOutlineChevronDown style={{ float: 'right' }} />
-                                        </div>
-
-                                        {toggle.gender && <div style={{margin:'4px 0'}}>
-                                            {gender.map((element)=>(
-                                                <button value={element} className='filter-btn' onClick={()=>setValue({...value, gender:element})}>{element}</button>
-                                            ))}
-                                        </div>}
-
-                                    </div> */}
-
 
                                 </div>
                             </div>
                         </div>
+
                         <div className='itemsContainer'>
                             <div className='sortByWrapper hidden-xs'>
                                 <div className='hoverMenuWrapper'>
@@ -378,12 +290,14 @@ const Collection = () => {
                                 </div>
                             </div>
                             <div className='productContainer'>
-                                <div className='productCardContainer'>
-                                    {filteredData?.map((items, index, type) => (
-                                        <ProductCard key={index} {...items} {...type} />
+                                {filteredData.length ? <>  <div className='productCardContainer'>
+                                    {filteredData?.map((items, index) => (
+                                        <ProductCard key={index} {...items} />
                                     ))}
                                 </div>
+                                </> : <><h1 style={{ fontSize: '45px', marginLeft: '20%', marginTop: '10%', opacity: 0.6 }}>Item not available</h1></>}
                             </div>
+
                         </div>
                     </div>
                 </div>

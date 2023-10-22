@@ -38,10 +38,13 @@ export const productApi = createApi({
         }),
         getWishlistItems: builder.query({
             query: () => createRequestAuth(`/wishlist`)
+        }),
+        getOrderDetails: builder.query({
+            query :()=> createRequestAuth(`/order/`)
         })
     })
 })
 
 
-export const { useGetProductsQuery, useGetSingleProductQuery, useGetCartItemsQuery, useGetWishlistItemsQuery } = productApi;
+export const { useGetProductsQuery, useGetSingleProductQuery, useGetCartItemsQuery, useGetWishlistItemsQuery, useGetOrderDetailsQuery } = productApi;
 

@@ -30,6 +30,7 @@ const Wishlist = () => {
         </div>) : (
 
           <div className='product-container'>
+            <h2 style={{marginBottom:'25px'}}>My Wishlist</h2>
             <div className='product-card-container'>
               {wishlistData?.map((items, index) => (
                 <WishlistCard key={index} {...items} />
