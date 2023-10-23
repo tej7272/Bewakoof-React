@@ -15,6 +15,7 @@ import MyOrders from './components/pages/myaccount/MyOrders';
 import Checkout from './components/pages/checkout/Checkout';
 import ThankyouPage from './components/pages/checkout/ThankyouPage';
 import { createContext, useState } from 'react';
+import MyProfile from './components/pages/myprofile/MyProfile';
   
 
 export const SearchContext = createContext();
@@ -39,6 +40,7 @@ function App() {
           <Route exact path='/wishlist' element={<Wishlist />} />
           <Route exact path='/account' element={<MyAccount />} />
           <Route exact path='/orders' element={<MyOrders />} />
+          <Route exact path='/myprofile' element={<MyProfile />} />
           <Route exact path='/checkout' element={<Checkout />} />
           <Route exact path='/thankyou' element={<ThankyouPage />} />
           <Route exact path="/login" element={<Login />} />

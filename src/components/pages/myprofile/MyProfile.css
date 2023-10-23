@@ -1,0 +1,87 @@
+.user-heading{
+    font-size: 25px;
+    margin-bottom: 25px;
+    opacity: 0.7;
+}
+
+.user-login-box{
+    width: 350px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.user-login-box h2{
+    font-size: 30px;
+    padding: 10px 0;
+    opacity: 0.6;
+}
+
+.user-login-box button{
+    margin: 10px 5px;
+    padding: 10px 35px;
+    background: rgb(66, 162, 162);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px!important;
+    line-height: 18px!important;
+    color: #fff;
+    border: none;
+}
+
+.user-profile{
+    width: 340px;
+}
+
+.user-profile h2{
+    margin-bottom: 5px;
+    padding: 5px 0;
+    font-size: 16px;
+    opacity: 0.8;
+    text-transform:capitalize;
+}
+
+.user-profile span, .user-profile label{
+    font-size: 13px;
+    opacity: 0.8;
+
+}
+
+.user-profile hr{
+    margin-bottom: 20px;
+    color:aqua
+}
+
+.user-profile input{
+    display: block;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border: none;
+    width: 100%;
+}
+
+.password-box{
+    position: relative;
+}
+
+.toggle-show-password{
+    position: absolute;
+    z-index: 20;
+    top:33px;
+    right:3px;
+}
+
+.toggle-show-password img{
+    width: 17px;
+}
+
+.forget-btn{
+    background: none;
+    border: none;
+    color: #30a2a2;
+}
+
+.delete-btns{
+    display: flex;
+    justify-content: space-between;
+}
+

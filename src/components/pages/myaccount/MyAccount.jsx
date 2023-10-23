@@ -55,13 +55,16 @@ const MyAccount = () => {
                     <div className='account-separater'></div>
 
                     <div className='account-orders'>
+                        <Link to="/myprofile">
                         <div className='account-heading'>
                             <h3>My Profile</h3>
                             <span className='arrow-icon'><IoIosArrowForward /></span>
                         </div>
                         <span>Edit personal info, change password</span>
+                        </Link>
 
                     </div>
+                    
 
 
                 </div>
