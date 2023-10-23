@@ -127,6 +127,32 @@ export const deleteMyAccount = createAsyncThunk('deletemyaccount', async (delete
 })
 
 
+export const forgotPassword = createAsyncThunk('forgotPassword', async (forgotData)=>{
+    const url = `${base_domain}/api/v1/user/forgotPassword`;
+    const options = {
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            projectId : projectID,
+        },
+        body : JSON.stringify(forgotData),
+    }
+
+    const res = await fetch(url,options);
+
+    if(res.ok){
+        const data = await res.json();
+
+        console.log('fordfsd',forgotData)
+        return await data;
+    }
+    else{
+        const errorData = await res.json();
+        throw new Error(errorData.message);
+    }
+})
+
+
 const authSlice = createSlice({
     name : 'user',
     initialState,
@@ -191,6 +217,21 @@ const authSlice = createSlice({
             state.error = "";
         })
         .addCase(deleteMyAccount.rejected,(state,action)=>{
+            state.loading = false;
+            state.user = "";
+            state.error = action.payload;
+        })
+        .addCase(forgotPassword.pending,state=>{
+            state.loading = true;
+            state.user = "";
+            state.error = "";
+        })
+        .addCase(forgotPassword.fulfilled, (state,action)=>{
+            state.loading = false;
+            state.user = action.payload.user;
+            state.error = "";
+        })
+        .addCase(forgotPassword.rejected,(state,action)=>{
             state.loading = false;
             state.user = "";
             state.error = action.payload;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import './Navbar.css'
 import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
@@ -7,11 +7,11 @@ import { Link , useNavigate} from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
 import { SearchContext } from "../../App";
-// import { Drawer } from "@mui/material";
+import SideNav from "../loginsignup/sideNav/SideNav";
 
 const Navbar = () => {
 
-    // const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user?.token;
@@ -143,9 +143,9 @@ const Navbar = () => {
                             <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn"  />
                         </label>
                         <input type="checkbox" id="hambu"
-                        //  onClick={()=>setOpen(true)}
+                         onClick={()=>setOpen(true)}
                           />
-                        {/* <Drawer open={open} onClose={()=>setOpen(false)}><div style={{width:'150px', border:'1px solid red', height:'200px'}}></div></Drawer> */}
+                        <SideNav open={open} setOpen={setOpen} />
                         <div className="mActionMenu">
                             <span className="mBewakoofLogoDiv">
                                 <Link to="/" title="Online Lifestyles Brand - Bewakoof.com">

@@ -1,0 +1,73 @@
+.sideNav-container{
+    width:250px;
+    padding: 70px 5px;
+    
+}
+
+.sideNav-user{
+    width: 100%;
+    padding: 8px;
+    font-size: 19px;
+}
+
+.sideNav-container hr{
+    margin-bottom: 15px;
+    color:aqua;
+}
+
+.sideNav-user button{
+    margin-top: 6px;
+    border: none;
+    background: none;
+    color: rgb(43, 192, 197);
+    font-size: 16px;
+}
+
+.sideNav-shops{
+    padding: 8px;
+    font-weight: 550;
+
+}
+
+.sideNav-shops span{
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.sideNav-category{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.sideNav-category h3{
+    font-size: 13px;
+    font-weight: 510;
+}
+
+.sideNav-profile{
+    padding: 8px;
+    font-weight: 550;
+}
+
+.sideNav-profile span{
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.sideNav-profile a{
+    display: block;
+    font-size: 13px;
+    padding: 8px 0;
+}
+
+.sideNav-btn{
+    padding: 0 8px 8px;
+}
+
+.sideNav-btn button{
+    background: none;
+    border:none;
+    font-size: 13px;
+    font-weight: 550;
+}

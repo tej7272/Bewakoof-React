@@ -3,9 +3,11 @@ import './Login.css'
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../services/authSlice';
+import ForgotPassword from './ForgotPassword';
 
 const Login = () => {
 
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [toastMessage, setToastMessage] = useState("");
@@ -92,8 +94,10 @@ const Login = () => {
                 </div>
 
                 <div className="forgotPassword">
-                  <button type="button" id="web_forgot_password_link">Forgot Password?</button>
+                  <button type="button" id="web_forgot_password_link" onClick={()=>setOpen(true)}>Forgot Password?</button>
                 </div>
+
+                <ForgotPassword open={open} setOpen={setOpen}/>
 
                 <button id="mob_login_password_submit" type="submit" className="loginSubmit loginSubmit-disable" onClick={handleLogin}>Login</button>
               </form>
