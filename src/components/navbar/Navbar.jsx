@@ -3,6 +3,8 @@ import './Navbar.css'
 import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
 import { BiSolidUser, BiSearch } from 'react-icons/bi';
+import { IoIosArrowBack } from 'react-icons/io';
+import { RxCross2 } from 'react-icons/rx';
 import { Link, useNavigate } from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
@@ -12,6 +14,7 @@ import SideNav from "../loginsignup/sideNav/SideNav";
 const Navbar = () => {
 
     const [open, setOpen] = useState(false);
+    const [openSearch, setOpenSearch] = useState(false);
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user?.token;
@@ -42,6 +45,11 @@ const Navbar = () => {
     }
 
     const handleSearch = (e) => {
+        e.preventDefault();
+        navigate('/searchPage')
+    }
+
+    const handleSearchSubmit = (e) => {
         e.preventDefault();
         navigate('/searchPage')
     }
@@ -137,9 +145,9 @@ const Navbar = () => {
 
 
             <div className="sideNavBox">
-                <header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
+                {!openSearch ? (<header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
                     <div className="noMg mHeader">
-                        <label htmlFor="hambu" className="mLogoDiv" style={{cursor:'pointer'}}>
+                        <label htmlFor="hambu" className="mLogoDiv" style={{ cursor: 'pointer' }}>
                             <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn" />
                         </label>
                         <input type="checkbox" id="hambu"
@@ -153,10 +161,11 @@ const Navbar = () => {
                                 </Link>
                             </span>
                         </div>
+
                         <div className="iconMenuOption">
                             <span width="auto">
                                 <form className="msearchContainer">
-                                    <label>
+                                    <label onClick={() => setOpenSearch(true)}>
                                         <img src="https://images.bewakoof.com/web/ic-web-head-search.svg" alt="search-icon" className="header-icon ml-1" />
                                     </label>
                                 </form>
@@ -176,7 +185,20 @@ const Navbar = () => {
                             </span>
                         </div>
                     </div>
-                </header>
+                </header>) : (
+
+                    <div className="navbar-search-container">
+                        <IoIosArrowBack onClick={() => setOpenSearch(false)} />
+                        <form onSubmit={handleSearchSubmit}>
+                            <div className="navbar-search-input">
+                                <BiSearch />
+                                <input type="text" placeholder="Type to search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                                <RxCross2 style={{cursor:'pointer'}} onClick={() => setSearchTerm('')}/>
+                            </div>
+                        </form>
+                    </div>
+                )}
+
             </div>
         </div>
     );
