@@ -1,6 +1,6 @@
  .headerDivWrapper {
      width: 100%;
-     z-index: 5;
+     z-index: 4687;
      position: fixed;
      top: 0;
      height: 79px;
@@ -155,11 +155,13 @@
  .profile-box:hover>.profile {
      display: block;
      position: absolute;
+     z-index:123121212122;
      width: 180px;
      max-height: fit-content;
      left: -80px;
      float: left;
      background: #fff;
+     top:50px
  }
 
  .actionMenu img {

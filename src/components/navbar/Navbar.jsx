@@ -3,7 +3,7 @@ import './Navbar.css'
 import { FaRegHeart } from "react-icons/fa";
 import { BsBag } from "react-icons/bs";
 import { BiSolidUser, BiSearch } from 'react-icons/bi';
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
 import { SearchContext } from "../../App";
@@ -16,37 +16,37 @@ const Navbar = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = user?.token;
 
-    const {data:cartData} = useGetCartItemsQuery();
+    const { data: cartData } = useGetCartItemsQuery();
     const { searchTerm, setSearchTerm } = useContext(SearchContext);
 
 
     const currentLocation = window.location.pathname;
     const navigate = useNavigate();
 
-    const handleCartBtn = ()=>{
-        if(!token){
+    const handleCartBtn = () => {
+        if (!token) {
             navigate(`/login?redirectPath=${currentLocation}`);
         }
-        else{
+        else {
             navigate("/cart")
         }
     }
 
-    const handleWishlistBtn = ()=>{
-        if(!token){
+    const handleWishlistBtn = () => {
+        if (!token) {
             navigate(`/login?redirectPath=${currentLocation}`);
         }
-        else{
+        else {
             navigate("/wishlist")
         }
     }
 
-    const handleSearch = (e)=>{
+    const handleSearch = (e) => {
         e.preventDefault();
         navigate('/searchPage')
     }
 
-    const clearInput = (e)=>{
+    const clearInput = (e) => {
         e.preventDefault();
         setSearchTerm('');
     }
@@ -109,10 +109,10 @@ const Navbar = () => {
                                     <span className="actionMenu">
                                         {!token ? (<Link to="/login" style={{ textDecoration: 'none', color: "black" }}>
                                             Login
-                                        </Link>) : (<div className="profile-box" style={{paddingTop:'5px'}}>
+                                        </Link>) : (<div className="profile-box" style={{ paddingTop: '5px' }}>
                                             <BiSolidUser className="profile-icon" />
                                             <div className="profile">
-                                               <Profile />
+                                                <Profile />
                                             </div>
                                         </div>)}
                                     </span>
@@ -122,7 +122,7 @@ const Navbar = () => {
                             <div className="mainHeaderCols searchWrapper">
                                 <div className="icon-addon addon-sm">
                                     <form className="searchContainer" onSubmit={handleSearch}>
-                                        <input className="searchInput form-controls" placeholder="Search by product, category or collection" type="text" autoComplete="off"  value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}  onClick={clearInput}/>
+                                        <input className="searchInput form-controls" placeholder="Search by product, category or collection" type="text" autoComplete="off" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onClick={clearInput} />
                                         <BiSearch />
                                     </form>
                                     <div className="seperator "></div>
@@ -140,11 +140,11 @@ const Navbar = () => {
                 <header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
                     <div className="noMg mHeader">
                         <label htmlFor="hambu" className="mLogoDiv">
-                            <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn"  />
+                            <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn" />
                         </label>
                         <input type="checkbox" id="hambu"
-                         onClick={()=>setOpen(true)}
-                          />
+                            onClick={() => setOpen(true)}
+                        />
                         <SideNav open={open} setOpen={setOpen} />
                         <div className="mActionMenu">
                             <span className="mBewakoofLogoDiv">
