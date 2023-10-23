@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Profile from "../support/Profile";
 import { useGetCartItemsQuery } from "../../services/productApi";
 import { SearchContext } from "../../App";
-import SideNav from "../loginsignup/sideNav/SideNav";
+import SideNav from "../sideNav/SideNav";
 
 const Navbar = () => {
 
