@@ -139,7 +139,7 @@ const Navbar = () => {
             <div className="sideNavBox">
                 <header className="mHeaderDiv mHeaderSticky visible-sm visible-xs">
                     <div className="noMg mHeader">
-                        <label htmlFor="hambu" className="mLogoDiv">
+                        <label htmlFor="hambu" className="mLogoDiv" style={{cursor:'pointer'}}>
                             <img src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg" alt="" className="mMenuBtn" />
                         </label>
                         <input type="checkbox" id="hambu"
