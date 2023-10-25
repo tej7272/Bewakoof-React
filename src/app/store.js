@@ -8,10 +8,10 @@ import orderSlice from "../services/orderSlice";
 
 export const store = configureStore({
     reducer:{
-        auth : authSlice.reducer,
-        cart : cartSlice.reducer,
-        wishlist : wishlistSlice.reducer,
-        order : orderSlice.reducer,
+        auth : authSlice,
+        cart : cartSlice,
+        wishlist : wishlistSlice,
+        order : orderSlice,
         [productApi.reducerPath]:productApi.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware)

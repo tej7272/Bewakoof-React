@@ -133,7 +133,7 @@ const Checkout = () => {
                         console.error('Error:', error);
                     }
                 }
-                    navigate("/thankyou")
+                navigate("/thankyou")
             }
         }
     }
@@ -238,14 +238,14 @@ const Checkout = () => {
                         <form>
                             <div className='checkout-payment-content'>
                                 <label htmlFor='cardNumber'>Card Number:</label>
-                                <input type='text' name='cardNumber' id='cardNumber' placeholder='0000-0000-0000-0000' value={cardNumber} onChange={handleInputChange} maxLength="19"/>
+                                <input type='text' name='cardNumber' id='cardNumber' placeholder='0000-0000-0000-0000' value={cardNumber} onChange={handleInputChange} maxLength="19" />
                             </div>
 
                             {errors.cardNumber && <div className="error">{errors.cardNumber}</div>}
 
                             <div className='checkout-payment-content'>
                                 <label htmlFor='expiryDate'>Expiry Date (MM/YY):</label>
-                                <input type='text' id='expiryDate' name='expiryDate' placeholder='mm/yy' value={expiryDate} onChange={handleInputChange} maxLength="5"  />
+                                <input type='text' id='expiryDate' name='expiryDate' placeholder='mm/yy' value={expiryDate} onChange={handleInputChange} maxLength="5" />
                             </div>
 
                             {errors.expiryDate && <div className="error">{errors.expiryDate}</div>}

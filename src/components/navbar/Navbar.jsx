@@ -100,13 +100,16 @@ const Navbar = () => {
                             <div className="mainHeaderCols activeMenuWrp">
                                 <div className="actionMenu">
                                     <span className="actionMenu">
-                                        <a href="/country" className="country">
+                                        <span>
                                             <img src="https://images.bewakoof.com/web/india-flag-round-1639566913.png" alt="country" />
-                                        </a>
+                                        </span>
                                     </span>
                                     <span className="actionMenu">
                                         <button type="submit" onClick={handleCartBtn}>
+                                            <span className="cart-count-icon">
                                             <BsBag />
+                                            <span>{cartData?.results}</span>
+                                            </span>
                                         </button>
                                     </span>
                                     <span className="actionMenu">

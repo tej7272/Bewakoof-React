@@ -26,16 +26,16 @@ const SingleProduct = () => {
     const [addSignOff, setAddSignOff] = useState("+");
     const [addSignDes, setAddSignDes] = useState("+");
     const [addSignEx, setAddSignEx] = useState("+");
+    const [quantity, setQuantity] = useState();
 
 
-    const { data, isLoading } = useGetSingleProductQuery(productId);
+    const { data, isLoading, refetch } = useGetSingleProductQuery(productId);
     const productData = data?.data;
+
+    // console.log("productData", productData)
 
     const totalPrice = productData?.price + 400;
     const discount = parseInt(400 / totalPrice * 100);
-
-    // const date = new Date();
-    // console.log("date", date)
 
     const [mainImage, setMainImage] = useState(productData?.displayImage);
     const sliceimages = productData?.images?.slice(0, 5);
@@ -48,12 +48,20 @@ const SingleProduct = () => {
         }
         else {
             try {
-                const actionResult = await dispatch(addToCart(productId));
-                if (addToCart.fulfilled.match(actionResult)) {
-                    toast.success(actionResult.payload.message);
-
+                if (!quantity) {
+                    toast.error("select product quantity first");
                 } else {
-                    toast.error(actionResult.error.message);
+
+                    const newQuantity = parseInt(quantity) + parseInt(productData?.quantityInCart || 0);
+
+                    const actionResult = await dispatch(addToCart({ productId, quantity:newQuantity }));
+                    if (addToCart.fulfilled.match(actionResult)) {
+                        toast.success(actionResult.payload.message);
+                        refetch();
+
+                    } else {
+                        toast.error(actionResult.error.message);
+                    }
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -70,6 +78,7 @@ const SingleProduct = () => {
                 const actionResult = await dispatch(addToWishlist(productId));
                 if (addToWishlist.fulfilled.match(actionResult)) {
                     toast.success("Item is added to Wishlist");
+
 
                 } else {
                     toast.error(`${actionResult.error.message}`);
@@ -118,7 +127,7 @@ const SingleProduct = () => {
                                 {sliceimages?.map((item, index) => {
                                     return (
                                         <div className='image-box' key={index}>
-                                            <img src={item} alt='' onClick={() => setMainImage(item)} />
+                                            <img src={item} alt='' onClick={() => setMainImage(item)} style={{ cursor: 'pointer' }} />
                                         </div>
                                     )
                                 })}
@@ -154,9 +163,26 @@ const SingleProduct = () => {
                                 TriBe members get an extra discount of ₹50 and FREE shipping
                             </div>
 
+                            <div style={{ padding: ' 4px', marginBottom: '8px' }}>
+                                <div style={{ marginBottom: '10px' }}>Select Size </div>
+                                {productData?.size?.map((element, index) => <div className='product-size' key={index} >{element}</div>)}
+                            </div>
+
                             <div style={{ display: 'flex', alignItems: 'center', padding: ' 4px' }}>
                                 <div>Color :</div>
-                                <div className='product-color' style={{ background: `${productData?.color}` }} ></div>
+                                <div className='product-color' style={{ background: `${productData?.color}` }} title={`${productData?.color}`} ></div>
+                            </div>
+
+                            <div style={{ display: 'flex', alignItems: 'center', padding: ' 4px' }}>
+                                <div>Quantity : </div>
+                                <select className='product-select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                                    <option value="">Sel Qty</option>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
 
                             <div className='functionBtn'>

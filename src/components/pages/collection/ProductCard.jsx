@@ -23,7 +23,6 @@ const ProductCard = (props) => {
     const currentLocation = window.location.pathname;
 
       if(!token){
-        // navigate("/login");
         navigate(`/login?redirectPath=${currentLocation}`);
     }
     else{

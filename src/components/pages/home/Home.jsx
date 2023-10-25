@@ -4,9 +4,17 @@ import BottomHeader from '../../navbar/BottomHeader'
 import Banner from './Banner'
 import { categories } from '../../data/data'
 import { Link } from 'react-router-dom'
+import BestSeller from '../cards/BestSeller'
+import Trending from '../cards/Trending'
+import NewArrival from '../cards/NewArrival'
+// import ProductCard from '../collection/ProductCard'
+// import { useGetProductsQuery } from '../../../services/productApi'
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
 
 
 const Home = () => {
+
     return (
         <>
             <BottomHeader />
@@ -103,6 +111,59 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* BestSeller container start from here  */}
+
+                <div className="container-fluid">
+                    <div id="pb4-0" className="col-xs-12">
+                        <div id="pb4-0-0">
+                            <div>
+                                <div>Bestseller</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='container-fluid' style={{padding:'20px'}}>
+                  <BestSeller />
+                </div>
+
+                {/* trending section start from here  */}
+
+                <div className="container-fluid">
+                    <div id="pb4-0" className="col-xs-12">
+                        <div id="pb4-0-0">
+                            <div>
+                                <div>Trending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='container-fluid' style={{padding:'20px'}}>
+                  <Trending />
+                </div>
+
+
+                {/* New arrival section start from here  */}
+
+                <div className="container-fluid">
+                    <div id="pb4-0" className="col-xs-12">
+                        <div id="pb4-0-0">
+                            <div>
+                                <div>New Arrival</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='container-fluid' style={{padding:'20px'}}>
+                  <NewArrival />
+                </div>
+
             </div >
         </>
     )

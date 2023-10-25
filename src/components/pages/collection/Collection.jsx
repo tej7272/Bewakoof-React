@@ -111,7 +111,7 @@ const Collection = () => {
     const [sortBy, setSortBy] = useState("Popular");
     const [filteredData, setFilteredData] = useState([]);
 
-    let priceArray = [];
+    // let priceArray = [];
 
     const { data: productData, isLoading } = useGetProductsQuery();
 
@@ -126,7 +126,7 @@ const Collection = () => {
                     product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
                     product.category.toLowerCase().includes(content.toLowerCase()) ||
                     product.brand.toLowerCase().includes(content.toLowerCase()) ||
-                    (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
+                    // (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
                     (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
 
 
@@ -145,10 +145,10 @@ const Collection = () => {
         }
     }, [productData, sortBy, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
 
-    priceArray = filteredData?.map((element) => element.price)
+    // priceArray = filteredData?.map((element) => element.price)
 
-    const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
-    console.log("max price", maxPrice);
+    // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
+    // console.log("max price", maxPrice);
 
     // const sortData = (data, option) => {
     //     switch (option) {

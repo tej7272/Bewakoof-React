@@ -17,10 +17,11 @@ const WishlistCard = (props) => {
     const productId = products._id;
     const dispatch = useDispatch();
 
-    const handleCartButton = async () => {
+    const handleCartButton = async (e) => {
+        e.preventDefault();
 
         try {
-            const actionResult = await dispatch(addToCart(productId));
+            const actionResult = await dispatch(addToCart({productId,quantity: 1}));
             if (addToCart.fulfilled.match(actionResult)) {
                 toast.success(actionResult.payload.message);
 

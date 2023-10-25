@@ -250,6 +250,24 @@
  }
 
 
+ .cart-count-icon{
+    position: relative;
+ }
+
+ .cart-count-icon span{
+    position: absolute;
+    top: -40%;
+  left: 55%;
+    font-size:10px;
+    background: #f35252;
+    border-radius: 50%;
+    width:13px;
+    height:13px;
+    padding-top: 1px;
+    text-align: center;
+    color: #fff;
+ }
+
  /* side navbar start from here  */
 
  .sideNavBox .mHeaderDiv {

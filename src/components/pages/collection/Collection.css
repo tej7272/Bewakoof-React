@@ -225,6 +225,7 @@
 
 
 
+
 @media (min-width: 769px) {
     .container {
         width: 100%;
@@ -275,6 +276,9 @@
     .productContainer{
         margin-top: 0;
     }
+
+    /* best seller container start from here  */
+
 
 }
 

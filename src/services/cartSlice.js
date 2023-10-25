@@ -5,7 +5,7 @@ const auth = JSON.parse(localStorage.getItem('user'));
 const token = auth?.token;
 
 const initialState = {
-    cart : [],
+    items : [],
     quantity:0,
     loading:false,
     error:"",
@@ -14,9 +14,9 @@ const initialState = {
 const base_domain = 'https://academics.newtonschool.co';
 const projectID = 'dsc4zhei2sjh';
 
-export const addToCart = createAsyncThunk('cart/addtocart', async (productID) =>{
+export const addToCart = createAsyncThunk('cart/addtocart', async ({productId, quantity}) =>{
 
-    const url = `${base_domain}/api/v1/ecommerce/cart/${productID}`
+    const url = `${base_domain}/api/v1/ecommerce/cart/${productId}`
 
     const options = {
         method : 'PATCH',
@@ -26,7 +26,7 @@ export const addToCart = createAsyncThunk('cart/addtocart', async (productID) =>
             Authorization: `Bearer ${token}`,
         },
         body :JSON.stringify({
-            quantity : 1
+            quantity : quantity
         })
     }
 
@@ -79,7 +79,7 @@ const cartSlice = createSlice({
         })
         .addCase(addToCart.fulfilled,(state, action)=>{
             state.loading=false;
-            state.cart = action.payload.cart;
+            state.items = action.payload.items;
         })
         .addCase(addToCart.rejected,(state,action)=>{
             state.loading = false;
@@ -90,7 +90,7 @@ const cartSlice = createSlice({
         })
         .addCase(deleteFromCart.fulfilled, (state,action)=>{
             state.loading = false;
-            state.cart = action.payload.cart;
+            state.items = action.payload.items;
         })
         .addCase(deleteFromCart.rejected, (state, action) => {
             state.loading = false;

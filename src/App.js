@@ -36,6 +36,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/:type' element={<Collection />} />
           <Route exact path='/:type/:productId' element={<SingleProduct />} />
+          <Route exact path='/item/:productId' element={<SingleProduct />} />
           <Route exact path='/cart' element={<Carts />} />
           <Route exact path='/wishlist' element={<Wishlist />} />
           <Route exact path='/account' element={<MyAccount />} />
