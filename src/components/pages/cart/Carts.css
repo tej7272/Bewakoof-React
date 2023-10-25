@@ -105,7 +105,7 @@
     border-radius: 10px;
 }
 
-.product-content-box button {
+.product-content-box > button {
     padding: 8px 20px;
     border: none;
     font-size: 14px;
@@ -195,10 +195,24 @@
     font-size: 8px;
 }
 
+.cart-quantity{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.cart-quantity h2{
+    font-size: 15px;
+    margin-right: 5px;
+}
+
 .quantity-btn{
     background: transparent;
-    border:none;
-    margin-left: none;
+    padding: 7px 10px 4px;
+    border: none;
+    background: rgb(230, 229, 229);
+    border-radius: 4px;
+
 }
 
 @media (max-width:769px) {

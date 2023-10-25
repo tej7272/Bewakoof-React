@@ -61,16 +61,16 @@ const CartsCard = (props) => {
     try {
       const actionResult = await dispatch(addToWishlist(productId));
       if (addToWishlist.fulfilled.match(actionResult)) {
-          toast.success(actionResult.payload.message);
-          await dispatch(deleteFromCart(productId));
+        toast.success(actionResult.payload.message);
+        await dispatch(deleteFromCart(productId));
 
 
       } else {
-          toast.error(`${actionResult.error.message}`);
+        toast.error(`${actionResult.error.message}`);
       }
-  } catch (error) {
+    } catch (error) {
       console.error('Error:', error);
-  }
+    }
 
     await refetch();
 
@@ -104,11 +104,13 @@ const CartsCard = (props) => {
           <h4>{product.name}</h4>
           <h2>₹{product.price} <span style={{ textDecoration: 'line-through', fontSize: '14px', marginLeft: '5px', }}>₹{totalPrice} </span></h2>
           <span>You got {discount}% discount</span>
-          <h4 style={{ display: 'flex', alignItems: 'center' }}>Qty :
+          <div className='cart-quantity'>
+            <h2>Qty :</h2>
             <button className='quantity-btn' onClick={handleDecrease}><FaMinus style={{ color: 'red', fontSize: '17px' }} /></button>
-            <span style={{ fontSize: '15px', color: 'black' }}>{quantity}</span>
-            <button className='quantity-btn' onClick={handleIncrease}><FaPlus style={{ color: 'green', fontSize: '17px' }} /></button>
-          </h4>
+            <span style={{ fontSize: '15px', color: 'black', margin:'0 3px'}}>{quantity}</span>
+            <button className='quantity-btn' onClick={handleIncrease}>< FaPlus style={{ color: 'green', fontSize: '17px' }} /></button>
+
+          </div>
         </div>
         <div className='cart-image'>
           <img src={product.displayImage} alt="cart item" />

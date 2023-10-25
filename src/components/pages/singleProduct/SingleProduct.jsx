@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SingleProduct.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useGetSingleProductQuery } from '../../../services/productApi';
+import { useGetCartItemsQuery, useGetSingleProductQuery } from '../../../services/productApi';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../services/cartSlice';
 import { addToWishlist } from '../../../services/wishlistSlice'
@@ -29,10 +29,11 @@ const SingleProduct = () => {
     const [quantity, setQuantity] = useState();
 
 
-    const { data, isLoading, refetch } = useGetSingleProductQuery(productId);
+    const { data, isLoading } = useGetSingleProductQuery(productId);
     const productData = data?.data;
 
-    // console.log("productData", productData)
+
+    const { refetch } = useGetCartItemsQuery();
 
     const totalPrice = productData?.price + 400;
     const discount = parseInt(400 / totalPrice * 100);
@@ -42,7 +43,9 @@ const SingleProduct = () => {
 
     const currentLocation = window.location.pathname;
 
-    const handleAddToCart = async () => {
+    const handleAddToCart = async (e) => {
+        e.preventDefault();
+
         if (!token) {
             navigate(`/login?redirectPath=${currentLocation}`);
         }
@@ -54,10 +57,9 @@ const SingleProduct = () => {
 
                     const newQuantity = parseInt(quantity) + parseInt(productData?.quantityInCart || 0);
 
-                    const actionResult = await dispatch(addToCart({ productId, quantity:newQuantity }));
+                    const actionResult = await dispatch(addToCart({ productId, quantity: newQuantity }));
                     if (addToCart.fulfilled.match(actionResult)) {
                         toast.success(actionResult.payload.message);
-                        refetch();
 
                     } else {
                         toast.error(actionResult.error.message);
@@ -66,6 +68,8 @@ const SingleProduct = () => {
             } catch (error) {
                 console.error('Error:', error);
             }
+
+            await refetch();
         }
     };
 
@@ -176,7 +180,7 @@ const SingleProduct = () => {
                             <div style={{ display: 'flex', alignItems: 'center', padding: ' 4px' }}>
                                 <div>Quantity : </div>
                                 <select className='product-select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                                    <option value="">Sel Qty</option>
+                                    <option value="">Set Qty</option>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value="3">3</option>
