@@ -1,10 +1,13 @@
-import React from 'react'
+import React  from 'react'
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 
 // import { Carousel } from 'nuka-carousel';
 
-import NukaCarousel from 'nuka-carousel';
+// import NukaCarousel from 'nuka-carousel';
+
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 import { useGetProductsQuery } from '../../../services/productApi';
 
@@ -19,26 +22,29 @@ const BestSeller = () => {
     )).slice(0, 10);
 
 
-    const responsiveSettings = [
-        {
-          breakpoint: 1024, // Large desktop screens
-          settings: {
-            slidesToShow: 5,
-          },
-        },
-        {
-          breakpoint: 768, // Tablets and smaller screens
-          settings: {
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 480, // Mobile devices
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-      ];
+    // const carouselRef = useRef(null);
+
+
+    // const responsiveSettings = [
+    //     {
+    //         breakpoint: 1024, // Large desktop screens
+    //         settings: {
+    //             slidesToShow: 5,
+    //         },
+    //     },
+    //     {
+    //         breakpoint: 768, // Tablets and smaller screens
+    //         settings: {
+    //             slidesToShow: 4,
+    //         },
+    //     },
+    //     {
+    //         breakpoint: 480, // Mobile devices
+    //         settings: {
+    //             slidesToShow: 2,
+    //         },
+    //     },
+    // ];
 
     // const responsive = {
     //     desktop: {
@@ -69,60 +75,26 @@ const BestSeller = () => {
     // };
 
     return (
-        <>{isLoading ? <div>loading.....</div> : (
-            <>
-                {filterData &&
-                    // <Carousel responsive={responsive} >
-
-                    <NukaCarousel
-                    slidesToShow={5} // Default number of items
-                    cellSpacing={20}
-                    renderBottomCenterControls={null} // Remove pagination dots
-                    wrapAround // For infinite looping
-                    heightMode="first"
-                    initialSlideHeight={200}
-                    autoplay
-                    autoplayInterval={3000}
-                    decorators={[
-                        {
-                          component: CustomPrevButton, // Custom previous button
-                          position: 'CenterLeft',
-                        },
-                        {
-                          component: CustomNextButton, // Custom next button
-                          position: 'CenterRight',
-                        },
-                      ]}
-                    responsive={responsiveSettings} 
-                  > 
-
-
-                        {filterData?.map((item, index) => {
-                            return <Card key={index} {...item} />
-                        }
-                        )}
-                    </NukaCarousel>
-                }
-            </>
-
-        )}
-
-        </>
+        <div>
+            {isLoading ? (
+                <div>loading.....</div>
+            ) : (
+                <div>
+                    {filterData && (
+                         <AliceCarousel
+                         items={filterData?.map((item, index) => <Card key={index} {...item} />)}
+                         responsive={{
+                           0: { items: 1 },  
+                           768: { items: 2 },  
+                           1024: { items: 3 },  
+                         }}
+                       />
+                    )}
+                </div>
+            )}
+        </div>
     )
 
 }
-
-const CustomPrevButton = ({ previousSlide }) => (
-    <button className="custom-button custom-prev-button" onClick={previousSlide}>
-      &lt; Previous
-    </button>
-  );
-  
-  // Custom next button component
-  const CustomNextButton = ({ nextSlide }) => (
-    <button className="custom-button custom-next-button" onClick={nextSlide}>
-      Next &gt;
-    </button>
-  );
 
 export default BestSeller
