@@ -3,7 +3,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import { addToWishlist } from '../../../services/wishlistSlice';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Card = (props) => {
 
@@ -43,9 +43,9 @@ const Card = (props) => {
             <div className='category-card-content'>
                 
                 <div className='category-card-image'>
-                    <Link to={`/item/${productId}`}>
+                    <NavLink to={`/items/category/${productId}`}>
                     <img src={displayImage} alt='category' />
-                    </Link>
+                    </NavLink>
                 </div>
                 <div className='category-card-details'>
                     <div className='category-details-content'>

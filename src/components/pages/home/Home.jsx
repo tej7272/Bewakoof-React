@@ -3,14 +3,11 @@ import './Home.css'
 import BottomHeader from '../../navbar/BottomHeader'
 import Banner from './Banner'
 import { categories } from '../../data/data'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import BestSeller from '../cards/BestSeller'
-import Trending from '../cards/Trending'
-import NewArrival from '../cards/NewArrival'
-// import ProductCard from '../collection/ProductCard'
-// import { useGetProductsQuery } from '../../../services/productApi'
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
+// import Trending from '../cards/Trending'
+// import NewArrival from '../cards/NewArrival'
+
 
 
 const Home = () => {
@@ -105,9 +102,9 @@ const Home = () => {
                 <div className="container-fluid">
                     <div id="pb7-0" className="col-xs-12">
                         <div id="pb7-0-0" className="blockBuster-deals">
-                            <Link to='/pyjamas' title="" >
+                            <NavLink to='/pyjamas' title="" >
                                 <img src="https://images.bewakoof.com/uploads/grid/app/daily-deal-desktop-jogs--1---1--1696849857.jpg" alt="" />
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -131,7 +128,7 @@ const Home = () => {
 
                 {/* trending section start from here  */}
 
-                <div className="container-fluid">
+                {/* <div className="container-fluid">
                     <div id="pb4-0" className="col-xs-12">
                         <div id="pb4-0-0">
                             <div>
@@ -144,12 +141,12 @@ const Home = () => {
 
                 <div className='container-fluid' style={{padding:'20px'}}>
                   <Trending />
-                </div>
+                </div> */}
 
 
                 {/* New arrival section start from here  */}
 
-                <div className="container-fluid">
+                {/* <div className="container-fluid">
                     <div id="pb4-0" className="col-xs-12">
                         <div id="pb4-0-0">
                             <div>
@@ -162,11 +159,14 @@ const Home = () => {
 
                 <div className='container-fluid' style={{padding:'20px'}}>
                   <NewArrival />
-                </div>
+                </div> */}
+
+               
 
             </div >
         </>
     )
 }
+
 
 export default Home
