@@ -198,6 +198,11 @@
 }
 
 
+.slick-dots {
+    display: none !important;
+  }
+
+
 
 
 @media (min-width: 769px) {
