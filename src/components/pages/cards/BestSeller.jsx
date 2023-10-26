@@ -1,10 +1,4 @@
-import React  from 'react'
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-
-// import { Carousel } from 'nuka-carousel';
-
-// import NukaCarousel from 'nuka-carousel';
+import React from 'react';
 
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -22,58 +16,6 @@ const BestSeller = () => {
     )).slice(0, 10);
 
 
-    // const carouselRef = useRef(null);
-
-
-    // const responsiveSettings = [
-    //     {
-    //         breakpoint: 1024, // Large desktop screens
-    //         settings: {
-    //             slidesToShow: 5,
-    //         },
-    //     },
-    //     {
-    //         breakpoint: 768, // Tablets and smaller screens
-    //         settings: {
-    //             slidesToShow: 4,
-    //         },
-    //     },
-    //     {
-    //         breakpoint: 480, // Mobile devices
-    //         settings: {
-    //             slidesToShow: 2,
-    //         },
-    //     },
-    // ];
-
-    // const responsive = {
-    //     desktop: {
-    //         breakpoint: { max: 3000, min: 1150 },
-    //         items: 5,
-    //         slidesToSlide: 1 // optional, default to 1.
-    //     },
-    //     minidesktop: {
-    //         breakpoint: { max: 1150, min: 850 },
-    //         items: 4,
-    //         slidesToSlide: 1 // optional, default to 1.
-    //     },
-    //     tablet: {
-    //         breakpoint: { max: 850, min: 650 },
-    //         items: 3,
-    //         slidesToSlide: 1 // optional, default to 1.
-    //     },
-    //     miniTablet: {
-    //         breakpoint: { max: 650, min: 420 },
-    //         items: 2,
-    //         slidesToSlide: 1 // optional, default to 1.
-    //     },
-    //     mobile: {
-    //         breakpoint: { max: 420, min: 0 },
-    //         items: 1,
-    //         slidesToSlide: 1 // optional, default to 1.
-    //     }
-    // };
-
     return (
         <div>
             {isLoading ? (
@@ -81,14 +23,18 @@ const BestSeller = () => {
             ) : (
                 <div>
                     {filterData && (
-                         <AliceCarousel
-                         items={filterData?.map((item, index) => <Card key={index} {...item} />)}
-                         responsive={{
-                           0: { items: 1 },  
-                           768: { items: 2 },  
-                           1024: { items: 3 },  
-                         }}
-                       />
+                        <AliceCarousel
+                            items={filterData?.map((item, index) => <Card key={index} {...item} />)}
+                            responsive={{
+                                0: { items: 1 },     
+                                420: { items: 2 },     
+                                650: { items: 3 },     
+                                850: { items: 4 },  
+                                1150: { items: 5 },  
+                            }}
+
+                            disableDotsControls={true}
+                        />
                     )}
                 </div>
             )}
