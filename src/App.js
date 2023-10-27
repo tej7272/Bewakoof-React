@@ -49,6 +49,7 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
         </Routes>
       </div>
+      <div style={{width:'100%', height:'40px', background:'black'}}></div>
     </div>
     </SearchContext.Provider>
   );
