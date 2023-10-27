@@ -44,7 +44,7 @@ const CartsCard = (props) => {
       }
 
       else {
-        toast.error(`Quantity must be 1`);
+        toast.error(`Item quantity should be atleast 1 `);
       }
     } catch (error) {
       console.error('Error:', error);
