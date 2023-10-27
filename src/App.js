@@ -17,7 +17,6 @@ import ThankyouPage from './components/pages/checkout/ThankyouPage';
 import { createContext, useState } from 'react';
 import MyProfile from './components/pages/myprofile/MyProfile';
 import HomeSinglePage from './components/pages/singleProduct/HomeSinglePage';
-  
 
 export const SearchContext = createContext();
 
@@ -49,7 +48,6 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
         </Routes>
       </div>
-      <div style={{width:'100%', height:'40px', background:'black'}}></div>
     </div>
     </SearchContext.Provider>
   );

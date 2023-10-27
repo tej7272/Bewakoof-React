@@ -8,8 +8,7 @@ import { SearchContext } from '../../../App'
 import { AiOutlineDown } from 'react-icons/ai'
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import { subCategory, gender, brand, color, sellerTag } from '../../data/data'
-// import { useDispatch } from 'react-redux'
-// import { getItemsData } from '../../../services/cartSlice'
+
 
 const Collection = () => {
 
@@ -126,7 +125,6 @@ const Collection = () => {
                     product.subCategory.toLowerCase().includes(content.toLowerCase()) ||
                     product.category.toLowerCase().includes(content.toLowerCase()) ||
                     product.brand.toLowerCase().includes(content.toLowerCase()) ||
-                    // (content !== "men" && product.description.toLowerCase().includes(content.toLowerCase())) ||
                     (content !== "men" && product.name.toLowerCase().includes(content.toLowerCase()))
 
 

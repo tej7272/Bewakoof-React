@@ -16,8 +16,11 @@ const CartsCard = (props) => {
 
   const { refetch } = useGetCartItemsQuery();
 
-  const totalPrice = product.price + 400;
-  const discount = parseInt(400 / totalPrice * 100);
+  const price = product.price*quantity;
+  const addedPrice = 400*quantity;
+
+  const totalPrice = price + addedPrice;
+  const discount = parseInt(addedPrice / totalPrice * 100);
 
   const handleIncrease = async (e) => {
     e.preventDefault();
@@ -102,7 +105,7 @@ const CartsCard = (props) => {
       <div className='item-details'>
         <div>
           <h4>{product.name}</h4>
-          <h2>₹{product.price} <span style={{ textDecoration: 'line-through', fontSize: '14px', marginLeft: '5px', }}>₹{totalPrice} </span></h2>
+          <h2>₹{price} <span style={{ textDecoration: 'line-through', fontSize: '14px', marginLeft: '5px', }}>₹{totalPrice} </span></h2>
           <span>You got {discount}% discount</span>
           <div className='cart-quantity'>
             <h2>Qty :</h2>
