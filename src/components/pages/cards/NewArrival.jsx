@@ -1,13 +1,13 @@
 import React from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-
 import { useGetProductsQuery } from '../../../services/productApi';
 import Card from './Card';
+import './Card.css';
 
 const NewArrival = () => {
 
-    const { data: productData, isLoading } = useGetProductsQuery();
+    const { data: productData } = useGetProductsQuery();
 
 
 
@@ -16,26 +16,23 @@ const NewArrival = () => {
     )).slice(127, 137);
 
 
+
     return (
-        <>{isLoading ? <div>loading.....</div> : (
-            <>
-               {filterData && (
-                     <AliceCarousel
-                     items={filterData?.map((item, index) => <Card key={index} {...item} />)}
-                     responsive={{
-                         0: { items: 1 },     
-                         420: { items: 2 },     
-                         650: { items: 3 },     
-                         850: { items: 4 },  
-                         1150: { items: 5 },  
-                     }}
+        <>
+            {filterData && (
+                <AliceCarousel
+                    items={filterData?.map((item, index) => <Card key={index} {...item} />)}
+                    responsive={{
+                        0: { items: 1 },
+                        420: { items: 2 },
+                        650: { items: 3 },
+                        850: { items: 4 },
+                        1150: { items: 5 },
+                    }}
 
-                     disableDotsControls={true}
-                 />
-                )}
-            </>
-
-        )}
+                    disableDotsControls={true}
+                />
+            )}
         </>
     )
 }

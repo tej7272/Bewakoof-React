@@ -1,12 +1,12 @@
-import React from 'react'
-import './Home.css'
-import BottomHeader from '../../navbar/BottomHeader'
-import Banner from './Banner'
-import { categories } from '../../data/data'
-import { Link, NavLink } from 'react-router-dom'
-import BestSeller from '../cards/BestSeller'
-// import Trending from '../cards/Trending'
-// import NewArrival from '../cards/NewArrival'
+import React from 'react';
+import './Home.css';
+import BottomHeader from '../../navbar/BottomHeader';
+import Banner from './Banner';
+import { categories } from '../../data/data';
+import { Link, NavLink } from 'react-router-dom';
+import BestSeller from '../cards/BestSeller';
+import Trending from '../cards/Trending';
+import NewArrival from '../cards/NewArrival';
 
 
 
@@ -111,6 +111,8 @@ const Home = () => {
 
                 {/* BestSeller container start from here  */}
 
+                <div></div>
+
                 <div className="container-fluid">
                     <div id="pb4-0" className="col-xs-12">
                         <div id="pb4-0-0">
@@ -128,7 +130,7 @@ const Home = () => {
 
                 {/* trending section start from here  */}
 
-                {/* <div className="container-fluid">
+                <div className="container-fluid">
                     <div id="pb4-0" className="col-xs-12">
                         <div id="pb4-0-0">
                             <div>
@@ -141,12 +143,12 @@ const Home = () => {
 
                 <div className='container-fluid' style={{padding:'20px'}}>
                   <Trending />
-                </div> */}
+                </div>
 
 
                 {/* New arrival section start from here  */}
 
-                {/* <div className="container-fluid">
+                <div className="container-fluid">
                     <div id="pb4-0" className="col-xs-12">
                         <div id="pb4-0-0">
                             <div>
@@ -159,7 +161,7 @@ const Home = () => {
 
                 <div className='container-fluid' style={{padding:'20px'}}>
                   <NewArrival />
-                </div> */}
+                </div>
 
                
 
