@@ -23,9 +23,8 @@ const NewArrival = () => {
                 <AliceCarousel
                     items={filterData?.map((item, index) => <Card key={index} {...item} />)}
                     responsive={{
-                        0: { items: 1 },
-                        420: { items: 2 },
-                        650: { items: 3 },
+                        0: { items: 2 },
+                        550: { items: 3 },
                         850: { items: 4 },
                         1150: { items: 5 },
                     }}
