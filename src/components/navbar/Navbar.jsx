@@ -92,7 +92,7 @@ const Navbar = () => {
                                     <Link to="/women" className="menuSelectWrap"><span>WOMEN</span></Link>
                                 </span>
                                 <span className="menuWrapper">
-                                    <Link to="/mobile-cover" className="menuSelectWrap"><span>All Items</span></Link>
+                                    <Link to="/mobile-cover" className="menuSelectWrap"><span>ALL ITEMS</span></Link>
                                 </span>
                             </div>
                         </div>
