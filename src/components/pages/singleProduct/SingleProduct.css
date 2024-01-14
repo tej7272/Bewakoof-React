@@ -65,7 +65,7 @@
 /* description box styling start from here  */
 
 .summary-container{
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     height: 80vh;
 }
 

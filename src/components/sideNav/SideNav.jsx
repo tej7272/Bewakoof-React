@@ -8,12 +8,16 @@ const SideNav = (props) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
+    
+
     const { open, setOpen } = props;
     const navigate = useNavigate();
 
-    const handleLogout = () =>{
-        localStorage.removeItem();
-        setOpen(false);
+    const handleLogout = (e) =>{
+            e.preventDefault();
+            setOpen(false);
+        localStorage.removeItem('user');
+        console.log(user?.token);
     }
 
     const handleLogin = ()=>{
@@ -58,7 +62,7 @@ const SideNav = (props) => {
 
                     <Link to='/mobile-cover' onClick={()=>setOpen(false)} >
                         <div className='sideNav-category'>
-                            <h3>Mobile Covers</h3>
+                            <h3>All Items</h3>
                         </div>
                     </Link>
 
@@ -66,7 +70,7 @@ const SideNav = (props) => {
 
                 <hr />
 
-                <div className='sideNav-profile'>
+                {user?.token ? (<><div className='sideNav-profile'>
                     <span>My Profile</span>
                     <Link to='/account' onClick={()=>setOpen(false)}>
                         My account
@@ -81,7 +85,8 @@ const SideNav = (props) => {
                         My cart
                     </Link>
                 </div>
-                <hr />
+                   <hr /></>
+                ) : <></>}
                 <div className='sideNav-btn' >
                     {user?.token ? <button onClick={handleLogout}>Logout</button> :
                     <button onClick={handleLogin}>Login</button>}

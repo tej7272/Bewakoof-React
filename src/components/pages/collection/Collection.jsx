@@ -5,7 +5,7 @@ import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 import Loader from '../../../loader/Loader'
 import { SearchContext } from '../../../App'
-import { AiOutlineDown } from 'react-icons/ai'
+// import { AiOutlineDown } from 'react-icons/ai'
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import { subCategory, gender, brand, color, sellerTag } from '../../data/data'
 
@@ -21,6 +21,11 @@ const Collection = () => {
     const [brandVal, setBrandVal] = useState('');
     const [colorVal, setColorVal] = useState('');
     const [sellerTagVal, setSellerTagVal] = useState('');
+    const [filterColorGender, setFilterColorGender] = useState('');
+    const [filterColorSubCategory, setFilterColorSubCategory] = useState('');
+    const [filterColorBrand, setFilterColorBrand] = useState('');
+    const [filterColorSellerTag, setFilterColorSellerTag] = useState('');
+    const [filterColor, setFilterColor] = useState('');
 
     let content;
 
@@ -107,7 +112,9 @@ const Collection = () => {
             break;
 
     }
-    const [sortBy, setSortBy] = useState("Popular");
+
+
+    // const [sortBy, setSortBy] = useState("Popular");
     const [filteredData, setFilteredData] = useState([]);
 
     // let priceArray = [];
@@ -141,12 +148,13 @@ const Collection = () => {
             setFilteredData(apiData);
 
         }
-    }, [productData, sortBy, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
+    }, [productData, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
 
-    // priceArray = filteredData?.map((element) => element.price)
+    // const priceArray = filteredData?.map((element) => element.price)
 
     // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
     // console.log("max price", maxPrice);
+    // console.log("price"+ priceArray);
 
     // const sortData = (data, option) => {
     //     switch (option) {
@@ -160,6 +168,8 @@ const Collection = () => {
     //     }
     // };
 
+    // console.log("SortData"+ sortData);
+
 
     const handleClearAll = () => {
         setBrandVal('');
@@ -167,11 +177,20 @@ const Collection = () => {
         setGenderVal('');
         setSellerTagVal('');
         setSubCategoryVal('');
+        setFilterColor('');
+        setFilterColorGender('');
+        setFilterColorBrand('');
+        setFilterColorSellerTag('');
+        setFilterColorSubCategory('');
     }
 
-    const handleSortChange = (option) => {
-        setSortBy(option);
-    };
+    // const handleSortChange = (option) => {
+    //     setSortBy(option);
+    // };
+
+    // const handleSortBy = (e)=>{
+    //     setSortBy(e.target.value);
+    // }
 
     return (
         <>
@@ -200,7 +219,7 @@ const Collection = () => {
                                         </div>
                                         {toggle.gender && <div style={{ margin: '4px 0' }}>
                                             {gender.map((element, index) => (
-                                                <button key={index} value={element} className='filter-btn' onClick={() => setGenderVal(element)}>{element}</button>
+                                                <button key={index} value={element} style={{ background: element === filterColorGender ? '#55e7ad' : ' ' }} className='filter-btn' onClick={() => { setGenderVal(element === genderVal ? '' : element); setFilterColorGender(element === filterColorGender ? '' : element) }}>{element}</button>
                                             ))}
                                         </div>}
                                     </div>}
@@ -212,7 +231,7 @@ const Collection = () => {
                                         </div>
                                         {toggle.subCategory && <div style={{ margin: '4px 0' }}>
                                             {subCategory.map((element, index) => (
-                                                <button key={index} value={element} className='filter-btn' onClick={() => setSubCategoryVal(element)}>{element}</button>
+                                                <button key={index} value={element} className='filter-btn' style={{ background: element === filterColorSubCategory ? '#55e7ad' : ' ' }} onClick={() => { setSubCategoryVal(element === subCategoryVal ? '' : element); setFilterColorSubCategory(element === filterColorSubCategory ? '' : element) }}>{element}</button>
                                             ))}
                                         </div>}
                                     </div>
@@ -225,7 +244,7 @@ const Collection = () => {
 
                                         {toggle.brand && <div style={{ margin: '4px 0' }}>
                                             {brand.map((element, index) => (
-                                                <button key={index} value={element} className='filter-btn' onClick={() => setBrandVal(element)}>{element}</button>
+                                                <button key={index} value={element} className='filter-btn' style={{ background: element === filterColorBrand ? '#55e7ad' : ' ' }} onClick={() => { setBrandVal(element === brandVal ? '' : element); setFilterColorBrand(element === filterColorBrand ? '' : element) }}>{element}</button>
                                             ))}
                                         </div>}
 
@@ -238,7 +257,9 @@ const Collection = () => {
 
                                         {toggle.color && <div style={{ margin: '4px 0' }}>
                                             {color.map((element, index) => (
-                                                <button key={index} value={element} className='filter-color-btn' onClick={() => setColorVal(element)} style={{ backgroundColor: `${element}` }}></button>
+                                                <div className="filter-color-block" key={index} style={{ background: element === filterColor ? '#55e7ad' : ' ' }}  >
+                                                    <button value={element} className='filter-color-btn' style={{ background: element }} onClick={() => { setColorVal(element === colorVal ? '' : element); setFilterColor(element === filterColor ? '' : element) }}></button>
+                                                </div>
                                             ))}
                                         </div>}
 
@@ -251,7 +272,7 @@ const Collection = () => {
 
                                         {toggle.sellerTag && <div style={{ margin: '4px 0' }}>
                                             {sellerTag.map((element, index) => (
-                                                <button key={index} value={element} className='filter-btn' onClick={() => setSellerTagVal(element)}>{element}</button>
+                                                <button key={index} value={element} className='filter-btn' style={{ background: element === filterColorSellerTag ? '#55e7ad' : ' ' }} onClick={() => { setSellerTagVal(element === sellerTagVal ? '' : element); setFilterColorSellerTag(element === filterColorSellerTag ? '' : element) }}>{element}</button>
                                             ))}
                                         </div>}
 
@@ -262,31 +283,34 @@ const Collection = () => {
                         </div>
 
                         <div className='itemsContainer'>
-                            <div className='sortByWrapper hidden-xs'>
+                             {/* <div className='sortByWrapper hidden-xs'>
                                 <div className='hoverMenuWrapper'>
-                                    <button className='sortByButton'>
-                                        sort by
-                                        <span> {sortBy}</span>
-                                        <i className="icon_down">
-                                            <AiOutlineDown />
+                                     <button className='sortByButton'>
+                                         sort by
+                                         <span> {sortBy}</span>
+                                         <i className="icon_down">
+                                             <AiOutlineDown />
 
-                                        </i>
-                                        <div className='hoverMenu'>
-                                            <ul>
-                                                <li onClick={() => handleSortChange('popular')}>popular
-                                                    {/* <a aria-current="false" href="/sort=popular" style={{ color: 'rgb(66, 162, 162)' }} onClick={()=>handleSortChange('popular')} >Popular</a> */}
-                                                </li>
-                                                <li>
-                                                    <a aria-current="false" href="/sort=high" onClick={() => handleSortChange('high')} >Price : High to Low</a>
-                                                </li>
-                                                <li>
-                                                    <a aria-current="false" href="/sort=low" onClick={() => handleSortChange('low')} >Price : Low to High</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </button>
+                                         </i>
+                                         <div className='hoverMenu'>
+                                             <ul>
+                                                 <li>
+                                                     <a aria-current="false" href="/sort=high" onClick={() => handleSortChange('high')} >Price : High to Low</a>
+                                                 </li>
+                                                 <li>
+                                                     <a aria-current="false" href="/sort=low" onClick={() => handleSortChange('low')} >Price : Low to High</a>
+                                                 </li>
+                                             </ul>
+                                         </div>
+                                     </button>
+                                    
+                                    <span style={{fontSize:'14px', fontWeight:'600', margin:'3px 5px'}}>sort by</span> <select className='sortByButton' value={sortBy} onChange={handleSortBy}>
+                                        <option value="popular">Popular</option>
+                                        <option value="low">low to high</option>
+                                        <option value="high">high to low</option>
+                                    </select>
                                 </div>
-                            </div>
+                            </div>  */}
                             <div className='productContainer'>
                                 {filteredData.length ? <>  <div className='productCardContainer'>
                                     {filteredData?.map((items, index) => (

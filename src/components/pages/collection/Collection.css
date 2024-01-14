@@ -123,6 +123,14 @@
     font-weight: 500;
 }
 
+.filter-color-block {
+     display:inline-block;
+      margin:2px;
+      padding: 2px;
+      width:39px;
+      height:39px;
+}
+
 .filter-color-btn{
     width:35px;
     height: 35px;
@@ -153,15 +161,16 @@
 }
 
 .sortByButton {
-    display: block;
-    float: right;
-    font-size: 12px;
+    /* display: block; */
+    /* float: right; */
+    font-size: 13px;
     font-weight: 600;
-    color: rgba(45, 45, 45, .5);
-    border: none;
-    padding-bottom: 12px;
-    text-transform: uppercase;
-    background: transparent;
+    color: rgba(45, 45, 45, 0.7);
+
+    /* border: none; */
+    padding: 4px 0px;
+    /* text-transform: uppercase; */
+    /* background: transparent; */
 }
 
 .sortByButton>span {
