@@ -5,7 +5,6 @@ import ProductCard from './ProductCard'
 import { useParams } from 'react-router-dom'
 import Loader from '../../../loader/Loader'
 import { SearchContext } from '../../../App'
-// import { AiOutlineDown } from 'react-icons/ai'
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import { subCategory, gender, brand, color, sellerTag } from '../../data/data'
 
@@ -113,11 +112,7 @@ const Collection = () => {
 
     }
 
-
-    // const [sortBy, setSortBy] = useState("Popular");
     const [filteredData, setFilteredData] = useState([]);
-
-    // let priceArray = [];
 
     const { data: productData, isLoading } = useGetProductsQuery();
 
@@ -150,27 +145,6 @@ const Collection = () => {
         }
     }, [productData, content, subCategoryVal, colorVal, type, genderVal, sellerTagVal, brandVal]);
 
-    // const priceArray = filteredData?.map((element) => element.price)
-
-    // const maxPrice = priceArray.reduce((initialVal, curVal) => Math.max(initialVal, curVal), 0);
-    // console.log("max price", maxPrice);
-    // console.log("price"+ priceArray);
-
-    // const sortData = (data, option) => {
-    //     switch (option) {
-    //         case 'high':
-    //             return data.sort((a, b) => b.price - a.price);
-    //         case 'low':
-    //             return data.sort((a, b) => a.price - b.price);
-    //         case 'popular':
-    //         default:
-    //             return data;
-    //     }
-    // };
-
-    // console.log("SortData"+ sortData);
-
-
     const handleClearAll = () => {
         setBrandVal('');
         setColorVal('');
@@ -184,13 +158,6 @@ const Collection = () => {
         setFilterColorSubCategory('');
     }
 
-    // const handleSortChange = (option) => {
-    //     setSortBy(option);
-    // };
-
-    // const handleSortBy = (e)=>{
-    //     setSortBy(e.target.value);
-    // }
 
     return (
         <>
@@ -283,34 +250,6 @@ const Collection = () => {
                         </div>
 
                         <div className='itemsContainer'>
-                             {/* <div className='sortByWrapper hidden-xs'>
-                                <div className='hoverMenuWrapper'>
-                                     <button className='sortByButton'>
-                                         sort by
-                                         <span> {sortBy}</span>
-                                         <i className="icon_down">
-                                             <AiOutlineDown />
-
-                                         </i>
-                                         <div className='hoverMenu'>
-                                             <ul>
-                                                 <li>
-                                                     <a aria-current="false" href="/sort=high" onClick={() => handleSortChange('high')} >Price : High to Low</a>
-                                                 </li>
-                                                 <li>
-                                                     <a aria-current="false" href="/sort=low" onClick={() => handleSortChange('low')} >Price : Low to High</a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </button>
-                                    
-                                    <span style={{fontSize:'14px', fontWeight:'600', margin:'3px 5px'}}>sort by</span> <select className='sortByButton' value={sortBy} onChange={handleSortBy}>
-                                        <option value="popular">Popular</option>
-                                        <option value="low">low to high</option>
-                                        <option value="high">high to low</option>
-                                    </select>
-                                </div>
-                            </div>  */}
                             <div className='productContainer'>
                                 {filteredData.length ? <>  <div className='productCardContainer'>
                                     {filteredData?.map((items, index) => (

@@ -5,6 +5,7 @@ import { useGetCartItemsQuery } from '../../../services/productApi';
 import CartsCard from './CartsCard';
 import Loader from '../../../loader/Loader';
 
+
 const Carts = () => {
 
     const { data: cartData, refetch, isLoading } = useGetCartItemsQuery();

@@ -19,16 +19,6 @@ const ForgotPassword = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-
-    // useEffect(()=>{
-    //     // setLoading(true);
-    //     fetch('https://gnews.io/api/v4/top-headlines?category=sports&apikey=ea3bb3a33db10a8b7cc968ab6773b57e&max=10&lang=en')
-    //     .then(response => response.json())
-    //     .then(data => setNewsData(data))
-    //     // setLoading(false);
-    //   },[])
-
     
     const dispatch = useDispatch();
 
