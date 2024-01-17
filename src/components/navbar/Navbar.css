@@ -155,13 +155,13 @@
  .profile-box:hover>.profile {
      display: block;
      position: absolute;
-     z-index:123121212122;
+     z-index: 123121212122;
      width: 180px;
      max-height: fit-content;
      left: -80px;
      float: left;
      background: #fff;
-     top:50px
+     top: 50px
  }
 
  .actionMenu img {
@@ -250,22 +250,22 @@
  }
 
 
- .cart-count-icon{
-    position: relative;
+ .cart-count-icon {
+     position: relative;
  }
 
- .cart-count-icon span{
-    position: absolute;
-    top: -40%;
-  left: 55%;
-    font-size:10px;
-    background: #f35252;
-    border-radius: 50%;
-    width:13px;
-    height:13px;
-    padding-top: 1px;
-    text-align: center;
-    color: #fff;
+ .cart-count-icon span {
+     position: absolute;
+     top: -40%;
+     left: 55%;
+     font-size: 10px;
+     background: #f35252;
+     border-radius: 50%;
+     width: 13px;
+     height: 13px;
+     padding-top: 1px;
+     text-align: center;
+     color: #fff;
  }
 
  /* side navbar start from here  */
@@ -389,7 +389,7 @@
  }
 
  .msearchContainer label {
-    cursor: pointer;
+     cursor: pointer;
  }
 
  .sideNavBox .iconMenuOption span .header-icon {
@@ -402,8 +402,8 @@
  }
 
  .iconMenuOption span button {
-    border:none;
-    background: transparent;
+     border: none;
+     background: transparent;
  }
 
  .iconMenuOption span .cartCountHome {
@@ -428,43 +428,43 @@
  }
 
 
- .navbar-search-container{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    background: #fff;
-    height: 56px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    font-size: 20px;
+ .navbar-search-container {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     z-index: 9999;
+     background: #fff;
+     height: 56px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+     display: flex;
+     align-items: center;
+     padding: 10px 15px;
+     font-size: 20px;
 
  }
 
- .navbar-search-container form{
-    width:90%;
+ .navbar-search-container form {
+     width: 90%;
  }
 
- .navbar-search-input{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #e3e1e1;
-    
-    height:40px;
-    border-radius: 5px;
-    margin-left: 10px;
-    padding: 5px 15px;
+ .navbar-search-input {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     background: #e3e1e1;
+
+     height: 40px;
+     border-radius: 5px;
+     margin-left: 10px;
+     padding: 5px 15px;
  }
 
- .navbar-search-input input{
-    background: transparent;
-    outline: none;
-    border: none;
-    width: 85%;
-    font-size: 13px;
+ .navbar-search-input input {
+     background: transparent;
+     outline: none;
+     border: none;
+     width: 85%;
+     font-size: 13px;
  }
 
 

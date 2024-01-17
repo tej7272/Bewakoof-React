@@ -40,16 +40,6 @@
 /* collections container start from here  */
 
 
-.filter-bottom{
-    position: fixed;
-    bottom: 0;
-    height: 40px;
-    width: 100%;
-    z-index: 2344;
-    background-color: #42a2a2;
-    left: 0;
-}
-
 .collectionItems {
     max-height: 100%;
     position: relative;
@@ -171,18 +161,15 @@
     position: relative;
 }
 
-.sortByButton {
-    /* display: block; */
-    /* float: right; */
+/* .sortByButton {
+    
     font-size: 13px;
     font-weight: 600;
     color: rgba(45, 45, 45, 0.7);
 
-    /* border: none; */
     padding: 4px 0px;
-    /* text-transform: uppercase; */
-    /* background: transparent; */
-}
+   
+} */
 
 .sortByButton>span {
     color: #2d2d2d;
