@@ -170,6 +170,11 @@ const Collection = () => {
                         </div>
                     </div>
                     <div className='collectionItems container'>
+
+
+                        <div className='filter-bottom visible-xs visible-sm'>
+                            <button className='filter-bottom-btn'>filter here</button>
+                        </div>
                         <div className='fillterContainer hidden-xs'>
                             <div className="filterBoxMain">
                                 <div className="filterHeadingDesktop">

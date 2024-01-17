@@ -39,6 +39,17 @@
 
 /* collections container start from here  */
 
+
+.filter-bottom{
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    z-index: 2344;
+    background-color: #42a2a2;
+    left: 0;
+}
+
 .collectionItems {
     max-height: 100%;
     position: relative;
