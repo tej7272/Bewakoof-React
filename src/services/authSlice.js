@@ -142,8 +142,6 @@ export const forgotPassword = createAsyncThunk('forgotPassword', async (forgotDa
 
     if(res.ok){
         const data = await res.json();
-
-        console.log('fordfsd',forgotData)
         return await data;
     }
     else{
